@@ -6,4 +6,9 @@ script:
   - chmod a+x ./gradlew
   - ./gradlew check
 
-
+notifications:
+  email:
+    recipients:
+      - smartmapperproject@gmail.com
+    on_success: always
+    on_failure: always
