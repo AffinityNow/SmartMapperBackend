@@ -2,12 +2,8 @@ language: java
 
 sudo: false
 
-before_install:
-  - pip install --user codecov
-
 script:
   - chmod a+x ./gradlew
   - ./gradlew check
 
-after_success:
-  - codecov --file coverage/lcov.info --disable search
+
