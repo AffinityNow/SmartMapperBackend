@@ -2,8 +2,6 @@ language: java
 
 sudo: false
 
-before_install:
-
 script:
   - chmod a+x ./gradlew
   - ./gradlew check
