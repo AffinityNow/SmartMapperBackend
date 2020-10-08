@@ -6,7 +6,8 @@ script:
   - chmod a+x ./gradlew
   - ./gradlew check
 
-after_success: "sbt coveralls"
+after_success:
+  - ./gradlew test jacocoTestReport coveralls
 
 notifications:
   email:
