@@ -26,11 +26,11 @@ group =
         version = 1.0
 sourceCompatibility =
 
-        repositories {
-            // Use jcenter for resolving dependencies.
-            // You can declare any Maven/Ivy/file repository here.
-            jcenter()
-        }
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
