@@ -2,12 +2,12 @@ language: java
 
 sudo: false
 
-script:
+script: "sbt clean coverage test"
   - chmod a+x ./gradlew
   - ./gradlew check
 
 after_success:
-  - ./gradlew test jacocoTestReport coveralls
+  - ./gradlew jacocoRootReport coveralls
 
 notifications:
   email:
