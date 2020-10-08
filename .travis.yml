@@ -6,8 +6,7 @@ script:
   - chmod a+x ./gradlew
   - ./gradlew check
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+after_success: "sbt coveralls"
 
 notifications:
   email:
