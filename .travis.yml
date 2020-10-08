@@ -1,8 +1,4 @@
-env:
-  global:
-    - CODECOV_TOKEN=:uuid-repo-token
-
-anguage: java
+language: java
 
 sudo: false
 
