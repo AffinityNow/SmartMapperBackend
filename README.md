@@ -19,6 +19,25 @@ Suggestion d'itinéraires (réduire le temps d’attente) qui continuera à êtr
 
 ## 3. Exécution du service
 
+## Contributing
+(Coming soon...)
+
+## Versioning
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/smartmapperproject/SmartMapperFrontend). 
+
+## Authors
+* **Chakir Ardenne** - *Master 1 Devops project* - [Github Account](https://github.com/ChakirArdenne)
+* **Avi Assayag** - *Master 1 Devops project* - [Github Account](https://github.com/aviassayag)
+* **Erwyn Ramin** - *Master 1 Devops project* - [Github Account](https://github.com/Ramin-Erwyn)
+* **Ahlem Fantazi** - *Master 1 Devops project* - [Github Account](https://github.com/AhlemFANTA)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+This project licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE) file for details
+
+## Acknowledgments
+Coming soon...
 # III - Captures
 
-- ![capture](docs/images/projectStructure.png)
+![capture](docs/images/projectStructure.png)
