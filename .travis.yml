@@ -11,7 +11,7 @@ sudo: false
 script:
   - chmod a+x ./gradlew
   - ./gradlew check
-  - ./gradlew sonarqube
+  - sonar-scanner
 
 after_success:
   - ./gradlew jacocoRootReport coveralls
