@@ -21,6 +21,9 @@ plugins {
     // AsciiDoctor (doc)
     id 'org.asciidoctor.jvm.convert' version '3.2.0'
     id 'org.asciidoctor.jvm.pdf' version '3.2.0'
+
+    //Sonar
+    id "org.sonarqube" version "3.0"
 }
 
 group =
@@ -85,10 +88,6 @@ jacocoTestReport {
             commit = '4910271e8c3964b60e186a62f3e4339ed0752714'
         }
     }
-}
-
-plugins {
-    id "org.sonarqube" version "3.0"
 }
 
 sonarqube {
