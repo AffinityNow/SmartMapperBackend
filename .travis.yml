@@ -1,14 +1,14 @@
 language: java
 
-sudo: false
-
 addons:
   sonarcloud:
     organization: "smartmapperproject"
     token:
       secure: "x+rYeJYMM3eVHme8lwLhxXgkUlVpRFK5TdbQFTUbuR+HiQ9UPPVaKdrGmN7kjdEWyxfZ3tC2+eEfihKTEzm062yTF0rdaPmWLLfsnq2DkaTk9nyCroQOK+Xi1gBo6tZdq0wp/5R8WxZBfeu72K8eNYSxuP5l9dBl37JxIP3PfQdspMGivFOLJequCrU99pRIvVkMSpUQW7vlRnY8m9J/O+aIDbnK5eychAaAwzJO5jUXhwM7qSuio+1ECeVifKYCNKc1tlACNUjvZSJ2iMuFW+AoDuJmniLOVJh/SLUesT9s1Gpaa+JUpaaLLZkBwyUvSgAlGHJ4Mop3CJxLvHw0CHQkZ7DWf1HhYNePWpff7S7l/4NdP/iSslpSjjQChV3wk9i5DUxQ4ovxMnNlRK2AYzYPtHJCj4VyMsMlMJYVTU+g7u4MkC+b9Py36Hkt+bvt0/V524Bma4QciGbotItKvUPph7JV5swH78M5CJbxqLge+vO6vU+SNZi6lY30OCwcyAcYCqDoYQ38U+p8T5BddCrbbd8FCBKLJZT5ASu2hNKtmN/f5Q/5FLheWB8tGPyfyrboFASQWgI0b8xOCS1ncPM0CyD+opyD/bNUqK69SXDPtI2aBKIJU607irLPMVO5DgKSY8WvvdO3azpGLYYQuHHeZ80U4u39gTKF4o0ae1U="
 
-script: "sbt clean coverage test"
+sudo: false
+
+script:
   - chmod a+x ./gradlew
   - ./gradlew check
   - ./gradlew sonarqube
