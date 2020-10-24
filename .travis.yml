@@ -3,10 +3,9 @@ language: java
 addons:
   sonarcloud:
     organization: smartmapperproject
-    token:
-      secure: "Yy0pr4TUkIFSG+9XWaLeBy5G1vKASv9UZY32H+7t4X0eWHcxuEuP1C0bdG7IU61WzOdCvU6ZNEEF0Ok6poeFFHqPRA5ma43XhCh73PJI3jGE8keLjdRBd211I/qMyqjegFxh1aB98CBY2UzNZB+24cIHT/SEwmZi5Xx9gyH5Cf+e6IbT3mXuoRb1YWE4T9s6fC63ilG6vS9zharXh8Mi6/UQKqbuS061p665b/eQh728gBNsDcP5ZmIr3tJabm6oH9xRrdQlRlYnVKJi5OQMYqe171Y1S2ZIZ0u3MMu2ng1Unfp6AijrEJ18ybkcVrs8fwJYsEiUjwARLBerDRPrSFCqtRwJ4bFCOnh8MW8Hn174o3Q6ixgZejXWPvkZnnQPhsO3qkhZVrsOVkRr5B1XMOIZn3SsK79xRuaHpEh0bMb7XR2gWdUCdHZcor28mtG2hxuce9jXMThnND25+HECZ/1TMDUWiFurabUs7eQcEhHIDNGT/PhxbWEZFmEhoirJ5J8OhjlSmMEVHb/4LdzJfe0RfpRfR0inBbMOed2ZXjHinjM10dm18KNfT1mwmuF6bXCINwOWRCeelqjVQ6KarZa315NzdwTu3d1qfAP4g+VOMOrc/RFrjvdppmiFJYXd94b/Ny28b+x0cvwKs5jqDELAjGZgHb5LZ3d7FHbUhSs="
+    token: $SONAR_TOKEN
 
-  sudo: false
+sudo: false
 
 script:
  - chmod a+x ./gradlew
