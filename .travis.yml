@@ -1,4 +1,5 @@
 language: java
+
 addons:
   sonarcloud:
     organization: smartmapperproject
@@ -6,15 +7,18 @@ addons:
       secure: '1sh9CsmgTXlRBHKVyxNTIZBK5VpKNYLKB/suCJMujTnkGhZx266Fbo9Tdnycdwd0ysOiXGKyFHRktjETHE6blexYqt/QmvQsfVb1geoILZtY49wy3a7I94TA0XPzujJw9rApQeDd82YErsvAXTUMnK1i4RbiNxeZoKIRss229ejkuujVc4zEWbxoxfFaTmIgIaIysKzjjbS+Xh5s7Gb0cxDKaP9APM666PQLdGaINUHzJYIgGsE1q3DoSPT9LQpAkbe6YG4wkAfXTcdIRgd4HtSXr8FgZIKynN9HoUr7u5vULZJikiW040RTcHfU2+VrjCO9pzk96JkZmoRozyA+Pz9YhiQT893pReHDn/7coauf6QA/FnDYqoBMfzLNRflXSmRJ7TMOMOJdbfri+ImeovIQAttMTrz4oIEpfOZvBGOvdgaKXGOQXDZC6e5H2Iiw/uR95cIOa9/RsqGYu5y26wOozWY/XxPcEvs5nSnFi3afEsW3cUoXhYSyyU0gfJUBcM7noZBHcZ0itvQs1Hk9fqEXLV0cABp5r/J+BGkswp3tzfzI+rAZNAPldUYAJl8OxF1FHrOk0/L0bmfKxR3sOwMdIFgJlSDp6BJ04VBcd+AVW2X7ENDv3BdrF7qK6rGs9j0Muk87iVjSo/+rQiaObcAMdO7SHGJaQO5zfhIaT5Y='
 
 sudo: false
+
 script:
-- chmod a+x ./gradlew
-- "./gradlew check"
-- "./gradlew sonarqube"
+ - chmod a+x ./gradlew
+ - ./gradlew check
+ - sonar-scanner
+
 after_success:
-- "./gradlew jacocoRootReport coveralls"
+  - "./gradlew jacocoRootReport coveralls"
+
 notifications:
   email:
     recipients:
-    - smartmapperproject@gmail.com
+     - smartmapperproject@gmail.com
     on_success: always
     on_failure: always
