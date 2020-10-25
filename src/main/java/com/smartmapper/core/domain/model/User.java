@@ -1,4 +1,3 @@
 package com.smartmapper.core.domain.model;
 
-public class User {
-}
+public record User(String identifier, String password) { }

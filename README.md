@@ -12,11 +12,15 @@
 l'Application "Smart Mapper" pour la gestion de mobilité".  
 Suggestion d'itinéraires (réduire le temps d’attente) qui continuera à être utile en dehors du Covid (Pour l’aspect marketing).
 
-# I - Description
+# Description
 
-# II - Lancement
+## 1. Prérequis
 
-## 1. Liste des end points
+## 2. Exécution du service
+Le service se lance avec gradle et tourne sur le port 8080 en utilisant la commande suivante : `gradle clean build`
+
+## 3. Liste des end points
+Une fois le service démarré, la liste des end points est consultable à l'url: http://localhost:8080/swagger-ui.html
 
 ## 2. Prérequis
 
