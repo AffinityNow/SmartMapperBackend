@@ -21,19 +21,26 @@ plugins {
     // AsciiDoctor (doc)
     id 'org.asciidoctor.jvm.convert' version '3.2.0'
     id 'org.asciidoctor.jvm.pdf' version '3.2.0'
-
     //Sonar
     id "org.sonarqube" version "3.0"
 }
 
-group =
-        version = 1.0
-sourceCompatibility =
+group ='com.smartmapper'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 14
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '--enable-preview'
+}
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
+}
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -45,6 +52,12 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'
+
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 application {
