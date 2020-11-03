@@ -1,5 +1,8 @@
 language: java
-
+branches:
+  only:
+    - master
+    - develop
 addons:
   sonarcloud:
     organization: smartmapperproject
