@@ -1,0 +1,141 @@
+"@startuml diagram"
+!include style/commons.style
+namespace src {
+    namespace main{
+        namespace java{
+            namespace com{
+                namespace smartmapper{
+                    namespace core{
+                        namespace domain{
+                            namespace model{
+                                namespace api{
+                                    interface User{
+                                        + getName() : string
+                                        + setName() : void
+                                        + getLogin() : string
+                                        + setLogin() : void
+                                        + getPassword() : string
+                                        + setPassword() : string
+                                        + getFavoris() : List<Favori>
+                                        + setFavoris() : void 
+                                    }
+                                    
+                                    interface PointOfInterest{
+                                        + getName() : string
+                                        + setName() : void
+                                        + getCoordinates() : Coordinates
+                                        + setCoordinates() : void
+                                        + getDescription() : string
+                                        + setDescription() : void
+                                    }
+                                    
+                                    interface Route{
+                                        + getName() : string
+                                        + setName() : void
+                                        + getPointOfInterests() : List<PointOfInterest>
+                                        + addPointOfInterest(PointOfInterest p) : void
+                                    }
+                                    
+                                    enum Note{
+                                        + GOOD, NEUTRAL, BAD
+                                    }
+                                    
+                                    interface Coordinates{
+                                        + getX()
+                                        + setX()
+                                        + getY()
+                                        + setY()
+                                    }
+                                    
+                                }
+                                
+                                namespace impl{
+                                    class UserImpl implements src.main.java.com.smartmapper.core.domain.model.api.User{
+                                        + name :string
+                                        + login : string
+                                        + password : string
+                                        + favori : List<Favori>
+                                        + this(name, login, password)
+                                        + getName() : string
+                                        + setName() : void
+                                        + getLogin() : string
+                                        + setLogin() : void
+                                        + getPassword : string
+                                        + setPassword() : string
+                                        + getFavoris() : List<Favori>
+                                        + setFavoris() : void 
+                                    }
+                                    
+                                    class CoordinatesImpl implements  src.main.java.com.smartmapper.core.domain.model.api.Coordinates{
+                                        + X : double
+                                        + Y : double
+                                        + this(double X, double Y)
+                                        + getX()
+                                        + setX()
+                                        + getY()
+                                        + setY()
+                                    }
+                                    
+                                    class PointOfInterestImpl implements src.main.java.com.smartmapper.core.domain.model.api.PointOfInterest{
+                                        + name : string
+                                        + coordinates : Coordinates
+                                        + description : string
+                                        + this(name, Coordinates, description)
+                                        + getName() : string
+                                        + setName() : void
+                                        + getCoordinates() : Coordinates
+                                        + setCoordinates() : void
+                                        + getDescription() : string
+                                        + setDescription() : void
+                                    }
+
+                                    class RouteImpl implements src.main.java.com.smartmapper.core.domain.model.api.Route{
+                                        + name : string
+                                        + pointOfInterest : PointOfInterest
+                                        + getName() : string
+                                        + setName() : void
+                                        + getPointOfInterests() : List<PointOfInterest>
+                                        + setPointOfInterest(PointOfInterest p) : void
+                                    }
+
+                                    class Favori extends src.main.java.com.smartmapper.core.domain.model.impl.PointOfInterestImpl{
+                                        + favori : boolean
+                                        + note : Note
+                                        + this(name, Coordinates, description, Note)
+                                        + isFavori() : boolean
+                                        + getNote() : Note
+                                        + setNote() : void
+                                    }
+                                }
+                            }
+                            
+                            namespace exception{
+                            }
+
+                            namespace infra{
+                                namespace controller{
+                                }
+                                namespace dto{
+                                }
+                                namespace repository{
+                                }
+                                namespace service{
+                                    namespace serviceImpl{
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    class AppMain{}
+                }
+            }
+        }
+        namespace test{
+    }
+}
+
+src.main.java.com.smartmapper.core.domain.model.impl.RouteImpl *..>  src.main.java.com.smartmapper.core.domain.model.impl.PointOfInterestImpl : "contains"
+src.main.java.com.smartmapper.core.domain.model.impl.UserImpl *..>  src.main.java.com.smartmapper.core.domain.model.impl.Favori : "contains"
+src.main.java.com.smartmapper.core.domain.model.impl ..> src.main.java.com.smartmapper.core.domain.model.api
+
+"@enduml"
