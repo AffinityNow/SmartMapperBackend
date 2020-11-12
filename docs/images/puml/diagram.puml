@@ -8,105 +8,62 @@ namespace src {
                     namespace core{
                         namespace domain{
                             namespace model{
-                                namespace api{
-                                    interface User{
-                                        + getName() : string
-                                        + setName() : void
-                                        + getLogin() : string
-                                        + setLogin() : void
-                                        + getPassword() : string
-                                        + setPassword() : string
-                                        + getFavoris() : List<Favori>
-                                        + setFavoris() : void 
-                                    }
-                                    
-                                    interface PointOfInterest{
-                                        + getName() : string
-                                        + setName() : void
-                                        + getCoordinates() : Coordinates
-                                        + setCoordinates() : void
-                                        + getDescription() : string
-                                        + setDescription() : void
-                                    }
-                                    
-                                    interface Route{
-                                        + getName() : string
-                                        + setName() : void
-                                        + getPointOfInterests() : List<PointOfInterest>
-                                        + addPointOfInterest(PointOfInterest p) : void
-                                    }
-                                    
-                                    enum Note{
-                                        + GOOD, NEUTRAL, BAD
-                                    }
-                                    
-                                    interface Coordinates{
-                                        + getX()
-                                        + setX()
-                                        + getY()
-                                        + setY()
-                                    }
-                                    
+                                class User{
+                                    + name :string
+                                    + login : string
+                                    + password : string
+                                    + favori : Map<string, Favori>
+                                    + this(name, login, password)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getLogin() : string
+                                    + setLogin(string login) : void
+                                    + getPassword : string
+                                    + setPassword(string password) : string
+                                    + getFavoris() : Map<string, Favori>
+                                    + setFavoris(Map<string, Favori> favori) : void 
                                 }
                                 
-                                namespace impl{
-                                    class UserImpl implements src.main.java.com.smartmapper.core.domain.model.api.User{
-                                        + name :string
-                                        + login : string
-                                        + password : string
-                                        + favori : List<Favori>
-                                        + this(name, login, password)
-                                        + getName() : string
-                                        + setName() : void
-                                        + getLogin() : string
-                                        + setLogin() : void
-                                        + getPassword : string
-                                        + setPassword() : string
-                                        + getFavoris() : List<Favori>
-                                        + setFavoris() : void 
-                                    }
-                                    
-                                    class CoordinatesImpl implements  src.main.java.com.smartmapper.core.domain.model.api.Coordinates{
-                                        + X : double
-                                        + Y : double
-                                        + this(double X, double Y)
-                                        + getX()
-                                        + setX()
-                                        + getY()
-                                        + setY()
-                                    }
-                                    
-                                    class PointOfInterestImpl implements src.main.java.com.smartmapper.core.domain.model.api.PointOfInterest{
-                                        + name : string
-                                        + coordinates : Coordinates
-                                        + description : string
-                                        + this(name, Coordinates, description)
-                                        + getName() : string
-                                        + setName() : void
-                                        + getCoordinates() : Coordinates
-                                        + setCoordinates() : void
-                                        + getDescription() : string
-                                        + setDescription() : void
-                                    }
-
-                                    class RouteImpl implements src.main.java.com.smartmapper.core.domain.model.api.Route{
-                                        + name : string
-                                        + pointOfInterest : PointOfInterest
-                                        + getName() : string
-                                        + setName() : void
-                                        + getPointOfInterests() : List<PointOfInterest>
-                                        + setPointOfInterest(PointOfInterest p) : void
-                                    }
-
-                                    class Favori extends src.main.java.com.smartmapper.core.domain.model.impl.PointOfInterestImpl{
-                                        + favori : boolean
-                                        + note : Note
-                                        + this(name, Coordinates, description, Note)
-                                        + isFavori() : boolean
-                                        + getNote() : Note
-                                        + setNote() : void
-                                    }
+                                class Coordinates   {
+                                    + X : double
+                                    + Y : double
+                                    + this(double X, double Y)
+                                    + getX() : double
+                                    + setX(double x)
+                                    + getY() : double
+                                    + setY(double y)
                                 }
+                                
+                                class PointOfInterest {
+                                    + name : string
+                                    + coordinates : Coordinates
+                                    + description : string
+                                    + this(name, Coordinates, description)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getCoordinates() : Coordinates
+                                    + setCoordinates(string coordinates) : void
+                                    + getDescription() : string
+                                    + setDescription(string description) : void
+                                }
+
+                                class Route {
+                                    + name : string
+                                    + pointOfInterest : Map<string, PointOfInterest>
+                                    + this(name, pointOfinterest)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getPointOfInterests() : Map<string, PointOfInterest>
+                                    + setPointOfInterest(PointOfInterest p) : void
+                                }
+
+                                class Favori extends src.main.java.com.smartmapper.core.domain.model.PointOfInterest{
+                                    + note : Note
+                                    + this(name, Coordinates, description, Note)
+                                    + getNote() : Note
+                                    + setNote(Note note) : void
+                                }
+                                
                             }
                             
                             namespace exception{
@@ -134,8 +91,9 @@ namespace src {
     }
 }
 
-src.main.java.com.smartmapper.core.domain.model.impl.RouteImpl *..>  src.main.java.com.smartmapper.core.domain.model.impl.PointOfInterestImpl : "contains"
-src.main.java.com.smartmapper.core.domain.model.impl.UserImpl *..>  src.main.java.com.smartmapper.core.domain.model.impl.Favori : "contains"
-src.main.java.com.smartmapper.core.domain.model.impl ..> src.main.java.com.smartmapper.core.domain.model.api
+src.main.java.com.smartmapper.core.domain.model.Route *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
+src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
+src.main.java.com.smartmapper.core.domain.model.PointOfInterest *..>  src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
+
 
 "@enduml"
