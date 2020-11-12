@@ -13,6 +13,7 @@ namespace src {
                                     + login : string
                                     + password : string
                                     + favori : Map<string, Favori>
+                                    + adresses : Map<string, PointOfInterest>
                                     + this(name, login, password)
                                     + getName() : string
                                     + setName(string name) : void
@@ -21,7 +22,9 @@ namespace src {
                                     + getPassword : string
                                     + setPassword(string password) : string
                                     + getFavoris() : Map<string, Favori>
-                                    + setFavoris(Map<string, Favori> favori) : void 
+                                    + setFavoris(Map<string, Favori> favori) : void
+                                    + getAdresses() : Map<string, Favori>
+                                    + setAdresses(Map<string, Favori> favori) : void  
                                 }
                                 
                                 class Coordinates   {
@@ -63,7 +66,30 @@ namespace src {
                                     + getNote() : Note
                                     + setNote(Note note) : void
                                 }
-                                
+
+                                class Adress {
+                                    + name : string
+                                    + user : User
+                                    + lines : string
+                                    + cedex : string
+                                    + postalCode : string
+                                    + city : string
+                                    + country : string
+                                    + point : pointOfInterest
+                                    + this(name, user, lines)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getUser() : User
+                                    + setUser(User user) : void
+                                    + getLines() : string
+                                    + setLines(string line1) : void
+                                    + getPostalCode() : postalCode
+                                    + setPostalCode(string postalCode) : void
+                                    + getCountry() : string
+                                    + setCountry(string country) : void
+                                    + getPoint() : pointOfInterest
+                                    + setPoint(pointOfInterest country) : void
+                                }
                             }
                             
                             namespace exception{
@@ -94,6 +120,8 @@ namespace src {
 src.main.java.com.smartmapper.core.domain.model.Route *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
 src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
 src.main.java.com.smartmapper.core.domain.model.PointOfInterest *..>  src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
+src.main.java.com.smartmapper.core.domain.model.Adress *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
+src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adress : "contains"
 
 
 "@enduml"
