@@ -23,7 +23,12 @@ public class Favori extends PointInteret {
 
     @Override
     public String toString() {
-        return super.toString() + "Favori [note=" + note + "]";
+        StringBuilder builder = new StringBuilder();
+        builder.append(super.toString());
+        builder.append("Favori [note=");
+        builder.append(note);
+        builder.append("]");
+        return builder.toString();
     }
 
     @Override

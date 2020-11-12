@@ -63,7 +63,17 @@ public class User {
 
     @Override
     public String toString() {
-        return new StringBuilder().append(name).append(login).append(password).append(favoris).toString();
+        StringBuilder builder = new StringBuilder();
+        builder.append("User [favoris=");
+        builder.append(favoris);
+        builder.append(", login=");
+        builder.append(login);
+        builder.append(", name=");
+        builder.append(name);
+        builder.append(", password=");
+        builder.append(password);
+        builder.append("]");
+        return builder.toString();
     }
 
     @Override

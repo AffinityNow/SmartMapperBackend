@@ -46,8 +46,15 @@ public class PointInteret {
 
     @Override
     public String toString() {
-        return "PointInteret [coordonnes=" + coordonnes + ", description=" + description + ", name="
-                + name + "]";
+        StringBuilder builder = new StringBuilder();
+        builder.append("PointInteret [coordonnes=");
+        builder.append(coordonnes);
+        builder.append(", description=");
+        builder.append(description);
+        builder.append(", name=");
+        builder.append(name);
+        builder.append("]");
+        return builder.toString();
     }
 
     @Override

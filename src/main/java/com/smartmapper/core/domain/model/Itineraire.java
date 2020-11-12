@@ -41,7 +41,13 @@ public class Itineraire {
 
 	@Override
 	public String toString() {
-		return "Itineraire [name=" + name + ", points=" + points + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Itineraire [name=");
+		builder.append(name);
+		builder.append(", points=");
+		builder.append(points);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override

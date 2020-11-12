@@ -43,7 +43,13 @@ public class Coordonnees {
 
     @Override
     public String toString() {
-        return "Coordonnees [x=" + x + ", y=" + y + "]";
+        StringBuilder builder = new StringBuilder();
+        builder.append("Coordonnees [x=");
+        builder.append(x);
+        builder.append(", y=");
+        builder.append(y);
+        builder.append("]");
+        return builder.toString();
     }
 
     @Override
