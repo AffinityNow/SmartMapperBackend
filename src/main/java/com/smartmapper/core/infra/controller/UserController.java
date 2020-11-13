@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import com.smartmapper.core.domain.model.Adresse;
 import com.smartmapper.core.domain.model.Favori;
+import com.smartmapper.core.domain.model.Itineraire;
 import com.smartmapper.core.domain.model.User;
 import com.smartmapper.core.infra.repository.UserRepository;
 import com.smartmapper.core.infra.service.serviceImpl.UserService;
@@ -55,7 +56,7 @@ public class UserController {
      * @throws UserNotFoundException
      */
     @GetMapping("/user/{id}/itineaires")
-    Map<String, Favori> itineraire(@PathVariable Long id) throws UserNotFoundException {
+    Map<String, Itineraire> itineraire(@PathVariable Long id) throws UserNotFoundException {
         return repository.findById(id)
                 .map(user -> user.getItineraires())
                 .orElseThrow(() -> new UserNotFoundException(id));
