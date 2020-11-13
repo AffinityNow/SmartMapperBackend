@@ -26,10 +26,10 @@ public class User {
     private Map<String, Favori> favoris;
     @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
     @Nullable
-    private Map<String, Favori> itineraires;
+    private Map<String, Itineraire> itineraires;
     @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
     @Nullable
-    private Map<String, Favori> adresses;
+    private Map<String, Adresse> adresses;
 
 
     public User(String name, String login, String password) {
@@ -77,19 +77,34 @@ public class User {
     }
 
     
-    public Map<String, Favori> getItineraires() {
+    public Map<String, Itineraire> getItineraires() {
         return itineraires;
     }
 
-    public void setItineraires(Map<String, Favori> itineraires) {
+    public void setItineraires(Map<String, Itineraire> itineraires) {
         this.itineraires = itineraires;
+    }
+
+    
+    public Map<String, Adresse> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(Map<String, Adresse> adresses) {
+        this.adresses = adresses;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("User [favoris=");
+        builder.append("User [adresses=");
+        builder.append(adresses);
+        builder.append(", favoris=");
         builder.append(favoris);
+        builder.append(", id=");
+        builder.append(id);
+        builder.append(", itineraires=");
+        builder.append(itineraires);
         builder.append(", login=");
         builder.append(login);
         builder.append(", name=");
@@ -130,4 +145,5 @@ public class User {
             return false;
         return true;
     }
+
 }

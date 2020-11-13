@@ -10,10 +10,12 @@ public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String name;
+    
     @ManyToOne
     private User user;
+
     private String lines;
     private String cedex;
     private String codePostal;
