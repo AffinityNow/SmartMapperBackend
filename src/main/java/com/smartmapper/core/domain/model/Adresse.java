@@ -3,6 +3,7 @@ package com.smartmapper.core.domain.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 public class Adresse {
 
@@ -11,6 +12,7 @@ public class Adresse {
     private Long id;
     
     private String name;
+    @ManyToOne
     private User user;
     private String lines;
     private String cedex;

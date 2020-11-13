@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import io.micrometer.core.lang.Nullable;
 
 
 @Entity
@@ -18,14 +21,26 @@ public class User {
     private String name;
     private String login;
     private String password;
+    @OneToMany(targetEntity=Favori.class, mappedBy="user")
+    @Nullable
     private Map<String, Favori> favoris;
+    @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
+    @Nullable
+    private Map<String, Favori> itineraires;
+    @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
+    @Nullable
+    private Map<String, Favori> adresses;
+
 
     public User(String name, String login, String password) {
 		this.name = name;
 		this.login = login;
         this.password = password;
         this.favoris = new HashMap<>();
-	}
+        this.itineraires = new HashMap<>();
+    }
+    
+    public User(){};
 
     public String getName() {
         return name;
@@ -59,6 +74,15 @@ public class User {
 
     public void setFavoris(Map<String, Favori> favoris) {
         this.favoris = favoris;
+    }
+
+    
+    public Map<String, Favori> getItineraires() {
+        return itineraires;
+    }
+
+    public void setItineraires(Map<String, Favori> itineraires) {
+        this.itineraires = itineraires;
     }
 
     @Override

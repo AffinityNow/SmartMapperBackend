@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Itineraire {
@@ -15,7 +18,11 @@ public class Itineraire {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
+	@OneToMany(targetEntity=User.class, 
+    fetch=FetchType.EAGER)
 	private Map<String, PointInteret> points;
+	@ManyToOne
+    private User user;
 	
 	
 	public Itineraire(String name) {

@@ -1,13 +1,23 @@
 package com.smartmapper.core.domain.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Favori extends PointInteret {
-    
-
+    @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Enumerated
     private Note note;
+    @ManyToOne
+    private User user;
 
+    
     public Favori(String name, Coordonnees coordonnes, String description, Note note) {
         super(name, coordonnes, description);
         this.note = note;
@@ -50,5 +60,12 @@ public class Favori extends PointInteret {
         return true;
     }
 
-    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+  
 }
