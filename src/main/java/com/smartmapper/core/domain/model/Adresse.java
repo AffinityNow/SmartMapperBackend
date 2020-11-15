@@ -159,5 +159,8 @@ public class Adresse {
         builder.append("]");
         return builder.toString();
     }
+
+    public Adresse() {
+    }
     
 }

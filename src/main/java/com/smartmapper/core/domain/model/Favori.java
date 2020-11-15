@@ -23,6 +23,9 @@ public class Favori extends PointInteret {
         this.note = note;
     }
 
+    
+
+
     public Note getNote() {
         return note;
     }
@@ -66,6 +69,9 @@ public class Favori extends PointInteret {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Favori() {
     }
   
 }

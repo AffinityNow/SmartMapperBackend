@@ -82,6 +82,9 @@ public class Itineraire {
 		return true;
 	}
 
+	public Itineraire() {
+	}
+
 	
     
 }

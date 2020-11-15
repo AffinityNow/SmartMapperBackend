@@ -81,4 +81,7 @@ public class Coordonnees {
             return false;
         return true;
     }
+
+    public Coordonnees() {
+    }
 }

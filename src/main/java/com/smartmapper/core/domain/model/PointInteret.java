@@ -3,6 +3,7 @@ package com.smartmapper.core.domain.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 public class PointInteret {
 
@@ -12,6 +13,8 @@ public class PointInteret {
     private String name;
     private Coordonnees coordonnes;
     private String description;
+    @ManyToOne
+    private Itineraire itineraire;
 
     public PointInteret(String name, Coordonnees coordonnes, String description) {
         this.name = name;
@@ -80,6 +83,9 @@ public class PointInteret {
         } else if (!coordonnes.equals(other.coordonnes))
             return false;
         return true;
+    }
+
+    public PointInteret() {
     }
     
     

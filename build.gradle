@@ -53,7 +53,6 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    runtimeOnly 'com.h2database:h2'
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 
@@ -64,6 +63,7 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("com.h2database:h2:1.4.191")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
