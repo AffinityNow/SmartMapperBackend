@@ -18,7 +18,7 @@ public class PointInteret {
     private String description;
     @ManyToOne(targetEntity=Itineraire.class)
     private Itineraire itineraire;
-    @ManyToOne(targetEntity=Adresse.class)
+    @OneToOne(targetEntity=Adresse.class)
     private Itineraire adresse;    
 
 
