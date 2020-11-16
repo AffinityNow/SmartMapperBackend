@@ -14,7 +14,7 @@ public class Favori extends PointInteret {
     private Long id;
     @Enumerated
     private Note note;
-    @ManyToOne
+    @ManyToOne(targetEntity=User.class)
     private User user;
 
     

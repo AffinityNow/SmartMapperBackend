@@ -2,7 +2,6 @@ package com.smartmapper.core.infra.service.serviceImpl;
 
 import java.util.List;
 import java.util.Map;
-
 import com.smartmapper.core.domain.model.Adresse;
 import com.smartmapper.core.domain.model.Favori;
 import com.smartmapper.core.domain.model.Itineraire;
@@ -103,5 +102,30 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException(id);
         else
             return newUser.getAdresses();
+    }
+
+    @Override
+    public User replaceUser(User newUser, long id) {
+        User user = repository.findById(id);
+
+        if(newUser.getName() != null)
+            user.setName(newUser.getName());
+
+        if(newUser.getLogin() != null)
+            user.setLogin(newUser.getLogin());
+
+        if(newUser.getPassword() != null)
+            user.setPassword(newUser.getPassword());
+
+        if(newUser.getAdresses() != null)
+            user.setAdresses(newUser.getAdresses());
+            
+        if(newUser.getItineraires() != null)    
+            user.setItineraires(newUser.getItineraires());
+
+        if(newUser.getFavoris() != null)
+            user.setFavoris(newUser.getFavoris());
+
+        return this.save(user);
     }
 }

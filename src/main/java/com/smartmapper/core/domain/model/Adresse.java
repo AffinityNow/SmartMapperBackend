@@ -1,10 +1,13 @@
 package com.smartmapper.core.domain.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Adresse {
 
     @Id
@@ -13,7 +16,7 @@ public class Adresse {
 
     private String name;
     
-    @ManyToOne
+    @ManyToOne(targetEntity=User.class)
     private User user;
 
     private String lines;
@@ -21,6 +24,7 @@ public class Adresse {
     private String codePostal;
     private String ville;
     private String pays;
+    @OneToOne(targetEntity = PointInteret.class)
     private PointInteret point;
 
     public Adresse(String name, User user, String lines, PointInteret point) {

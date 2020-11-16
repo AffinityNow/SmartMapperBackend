@@ -25,4 +25,5 @@ public interface UserService{
     void removeItineraire(User user, Itineraire itineraire);
     void addAdresse(User user, Adresse adresse);
     void removeAdresse(User user, Adresse adresse);
+	User replaceUser(User newUser, long id);
 }

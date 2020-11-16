@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.smartmapper.core.domain.model.Adresse;
-import com.smartmapper.core.domain.model.Favori;
 import com.smartmapper.core.domain.model.Itineraire;
 import com.smartmapper.core.domain.model.User;
-import com.smartmapper.core.infra.repository.UserRepository;
 import com.smartmapper.core.infra.service.serviceImpl.UserService;
 import com.smartmapper.exception.UserNotFoundException;
 
@@ -31,17 +29,17 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    List<User> all() {
+    public List<User> getAllUsers() {
         return service.getAll();
     }
 
     @GetMapping("/user/{id}")
-    User one(@PathVariable Long id) throws UserNotFoundException {
+    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
         return service.findById(id);
     }
 
     @GetMapping("/user/{id}/itineaires")
-    Map<String, Itineraire> itineraire(@PathVariable Long id) {
+    public Map<String, Itineraire> getUserItineraires(@PathVariable Long id) {
         Map<String, Itineraire> newMap = new HashMap<>();
         try {
             newMap = service.findItinerairesById(id);
@@ -51,8 +49,8 @@ public class UserController {
         return newMap;
     }
 
-    @GetMapping("/user/{id}/lieux")
-    Map<String, Adresse> adresses(@PathVariable Long id)  {
+    @GetMapping("/user/{id}/adresses")
+    public Map<String, Adresse> getUserAdresses(@PathVariable Long id)  {
         Map<String, Adresse> newMap = new HashMap<>();
         try {
             newMap = service.findAdresseById(id);
@@ -63,18 +61,17 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    User createUser(@RequestBody User newUser) {
+    public User createUser(@RequestBody User newUser) {
         return service.save(newUser);
     }
 
     @PutMapping("/user/{id}")
-    User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
-        // TODO
-        return null;
+    public User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
+        return service.replaceUser(newUser, id);
     }
 
     @DeleteMapping("/user/{id}")
-    void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable Long id) {
         service.delete(id);
     }
 }

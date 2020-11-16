@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,17 +18,17 @@ public class User {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private long id;
     private String name;
     private String login;
     private String password;
-    @OneToMany(targetEntity=Favori.class, mappedBy="user")
+    @OneToMany(targetEntity=Favori.class, mappedBy="user", fetch = FetchType.EAGER)
     @Nullable
     private Map<String, Favori> favoris;
-    @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
+    @OneToMany(targetEntity=Itineraire.class, mappedBy="user", fetch = FetchType.EAGER)
     @Nullable
     private Map<String, Itineraire> itineraires;
-    @OneToMany(targetEntity=Itineraire.class, mappedBy="user")
+    @OneToMany(targetEntity=Adresse.class, mappedBy="user", fetch = FetchType.EAGER)
     @Nullable
     private Map<String, Adresse> adresses;
 
@@ -41,6 +42,14 @@ public class User {
     }
     
     public User(){};
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -145,5 +154,4 @@ public class User {
             return false;
         return true;
     }
-
 }
