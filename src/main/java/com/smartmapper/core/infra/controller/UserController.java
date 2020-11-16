@@ -38,7 +38,7 @@ public class UserController {
         return service.findById(id);
     }
 
-    @GetMapping("/user/{id}/itineaires")
+    @GetMapping("/user/{id}/itineraires")
     public Map<String, Itineraire> getUserItineraires(@PathVariable Long id) {
         Map<String, Itineraire> newMap = new HashMap<>();
         try {
