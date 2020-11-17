@@ -11,7 +11,7 @@ addons:
 sudo: false
 
 script:
- - sbt clean coverage test"
+ - sbt clean coverage test
  - chmod a+x ./gradlew
  - ./gradlew check
  - sonar-scanner
