@@ -34,7 +34,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 * **Chakir Ardenne** - *Master 1 Devops project* - [Github Account](https://github.com/ChakirArdenne)
-* **Avi Assayag** - *Master 1 Devops project* - [Github Account](https://github.com/aviassayag)
+* **Avi Assayag** - *Master 1 Devops project* - [Github Account](https://github.com/AssayagAvi)
 * **Erwyn Ramin** - *Master 1 Devops project* - [Github Account](https://github.com/Ramin-Erwyn)
 * **Ahlem Fantazi** - *Master 1 Devops project* - [Github Account](https://github.com/AhlemFANTA)
 
@@ -47,4 +47,4 @@ This project licensed under the Apache License 2.0 - see the [LICENSE.md](LICENS
 Coming soon...
 # III - Captures
 
-![capture](docs/images/projectStructure.png)
+![capture](docs/images/endpoint.png)

@@ -1,0 +1,127 @@
+"@startuml diagram"
+!include style/commons.style
+namespace src {
+    namespace main{
+        namespace java{
+            namespace com{
+                namespace smartmapper{
+                    namespace core{
+                        namespace domain{
+                            namespace model{
+                                class User{
+                                    + name :string
+                                    + login : string
+                                    + password : string
+                                    + favori : Map<string, Favori>
+                                    + adresses : Map<string, PointOfInterest>
+                                    + this(name, login, password)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getLogin() : string
+                                    + setLogin(string login) : void
+                                    + getPassword : string
+                                    + setPassword(string password) : string
+                                    + getFavoris() : Map<string, Favori>
+                                    + setFavoris(Map<string, Favori> favori) : void
+                                    + getAdresses() : Map<string, Favori>
+                                    + setAdresses(Map<string, Favori> favori) : void  
+                                }
+                                
+                                class Coordinates   {
+                                    + X : double
+                                    + Y : double
+                                    + this(double X, double Y)
+                                    + getX() : double
+                                    + setX(double x)
+                                    + getY() : double
+                                    + setY(double y)
+                                }
+                                
+                                class PointOfInterest {
+                                    + name : string
+                                    + coordinates : Coordinates
+                                    + description : string
+                                    + this(name, Coordinates, description)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getCoordinates() : Coordinates
+                                    + setCoordinates(string coordinates) : void
+                                    + getDescription() : string
+                                    + setDescription(string description) : void
+                                }
+
+                                class Route {
+                                    + name : string
+                                    + pointOfInterest : Map<string, PointOfInterest>
+                                    + this(name, pointOfinterest)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getPointOfInterests() : Map<string, PointOfInterest>
+                                    + setPointOfInterest(PointOfInterest p) : void
+                                }
+
+                                class Favori extends src.main.java.com.smartmapper.core.domain.model.PointOfInterest{
+                                    + note : Note
+                                    + this(name, Coordinates, description, Note)
+                                    + getNote() : Note
+                                    + setNote(Note note) : void
+                                }
+
+                                class Adress {
+                                    + name : string
+                                    + user : User
+                                    + lines : string
+                                    + cedex : string
+                                    + postalCode : string
+                                    + city : string
+                                    + country : string
+                                    + point : pointOfInterest
+                                    + this(name, user, lines)
+                                    + getName() : string
+                                    + setName(string name) : void
+                                    + getUser() : User
+                                    + setUser(User user) : void
+                                    + getLines() : string
+                                    + setLines(string line1) : void
+                                    + getPostalCode() : postalCode
+                                    + setPostalCode(string postalCode) : void
+                                    + getCountry() : string
+                                    + setCountry(string country) : void
+                                    + getPoint() : pointOfInterest
+                                    + setPoint(pointOfInterest country) : void
+                                }
+                            }
+                            
+                            namespace exception{
+                            }
+
+                            namespace infra{
+                                namespace controller{
+                                }
+                                namespace dto{
+                                }
+                                namespace repository{
+                                }
+                                namespace service{
+                                    namespace serviceImpl{
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    class AppMain{}
+                }
+            }
+        }
+        namespace test{
+    }
+}
+
+src.main.java.com.smartmapper.core.domain.model.Route *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
+src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
+src.main.java.com.smartmapper.core.domain.model.PointOfInterest *..>  src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
+src.main.java.com.smartmapper.core.domain.model.Adress *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
+src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adress : "contains"
+
+
+"@enduml"
