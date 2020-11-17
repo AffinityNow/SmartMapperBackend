@@ -1,10 +1,10 @@
 package com.smartmapper.core.domain.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -16,6 +16,8 @@ public class Coordonnees {
 	private Long id;
     private Double x;
     private Double y;
+    @OneToOne
+    private PointInteret point;
 
 
 
@@ -81,5 +83,8 @@ public class Coordonnees {
         } else if (!y.equals(other.y))
             return false;
         return true;
+    }
+
+    public Coordonnees() {
     }
 }

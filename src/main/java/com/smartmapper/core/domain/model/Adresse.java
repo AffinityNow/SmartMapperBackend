@@ -1,22 +1,30 @@
 package com.smartmapper.core.domain.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Adresse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String name;
+    
+    @ManyToOne(targetEntity=User.class)
     private User user;
+
     private String lines;
     private String cedex;
     private String codePostal;
     private String ville;
     private String pays;
+    @OneToOne(targetEntity = PointInteret.class)
     private PointInteret point;
 
     public Adresse(String name, User user, String lines, PointInteret point) {
@@ -154,6 +162,9 @@ public class Adresse {
         builder.append(ville);
         builder.append("]");
         return builder.toString();
+    }
+
+    public Adresse() {
     }
     
 }

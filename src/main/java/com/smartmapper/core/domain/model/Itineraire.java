@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Itineraire {
@@ -15,7 +17,10 @@ public class Itineraire {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
+	@OneToMany(targetEntity=PointInteret.class, mappedBy="itineraire")
 	private Map<String, PointInteret> points;
+	@ManyToOne(targetEntity=User.class)
+    private User user;
 	
 	
 	public Itineraire(String name) {
@@ -73,6 +78,9 @@ public class Itineraire {
 		} else if (!points.equals(other.points))
 			return false;
 		return true;
+	}
+
+	public Itineraire() {
 	}
 
 	

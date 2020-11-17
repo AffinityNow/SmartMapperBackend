@@ -50,17 +50,25 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("com.h2database:h2:1.4.191")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compileOnly('org.projectlombok:lombok')
 }
 
 application {

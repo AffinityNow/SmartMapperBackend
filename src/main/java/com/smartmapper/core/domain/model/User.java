@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import io.micrometer.core.lang.Nullable;
 
 
 @Entity
@@ -14,18 +18,38 @@ public class User {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private long id;
     private String name;
     private String login;
     private String password;
+    @OneToMany(targetEntity=Favori.class, mappedBy="user", fetch = FetchType.EAGER)
+    @Nullable
     private Map<String, Favori> favoris;
+    @OneToMany(targetEntity=Itineraire.class, mappedBy="user", fetch = FetchType.EAGER)
+    @Nullable
+    private Map<String, Itineraire> itineraires;
+    @OneToMany(targetEntity=Adresse.class, mappedBy="user", fetch = FetchType.EAGER)
+    @Nullable
+    private Map<String, Adresse> adresses;
+
 
     public User(String name, String login, String password) {
 		this.name = name;
 		this.login = login;
         this.password = password;
         this.favoris = new HashMap<>();
-	}
+        this.itineraires = new HashMap<>();
+    }
+    
+    public User(){};
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -61,11 +85,35 @@ public class User {
         this.favoris = favoris;
     }
 
+    
+    public Map<String, Itineraire> getItineraires() {
+        return itineraires;
+    }
+
+    public void setItineraires(Map<String, Itineraire> itineraires) {
+        this.itineraires = itineraires;
+    }
+
+    
+    public Map<String, Adresse> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(Map<String, Adresse> adresses) {
+        this.adresses = adresses;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("User [favoris=");
+        builder.append("User [adresses=");
+        builder.append(adresses);
+        builder.append(", favoris=");
         builder.append(favoris);
+        builder.append(", id=");
+        builder.append(id);
+        builder.append(", itineraires=");
+        builder.append(itineraires);
         builder.append(", login=");
         builder.append(login);
         builder.append(", name=");

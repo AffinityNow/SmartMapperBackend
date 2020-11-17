@@ -1,17 +1,26 @@
 package com.smartmapper.core.domain.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+@Entity
 public class PointInteret {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
     private String name;
+    @OneToOne
     private Coordonnees coordonnes;
     private String description;
+    @ManyToOne(targetEntity=Itineraire.class)
+    private Itineraire itineraire;
+    @OneToOne(targetEntity=Adresse.class)
+    private Itineraire adresse;    
+
 
     public PointInteret(String name, Coordonnees coordonnes, String description) {
         this.name = name;
@@ -80,6 +89,9 @@ public class PointInteret {
         } else if (!coordonnes.equals(other.coordonnes))
             return false;
         return true;
+    }
+
+    public PointInteret() {
     }
     
     
