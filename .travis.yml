@@ -16,7 +16,7 @@ script:
  - sonar-scanner
 
 after_success:
-  - ./gradlew jacocoRootReport coveralls
+  - ./gradlew jacocoTestReport coveralls
 
 notifications:
   email:
