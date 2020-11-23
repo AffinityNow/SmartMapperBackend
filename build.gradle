@@ -75,12 +75,6 @@ dependencies {
     asciidoctorGems 'rubygems:rouge:3.15.0'
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': mainClassName
-    }
-}
-
 asciidoctorPdf {
 //   dependsOn asciidoctorGemsPrepare
 
@@ -114,4 +108,11 @@ sonarqube {
 application {
     // Define the main class for the application.
     mainClassName = 'com.smartmapper.AppMain'
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 }
