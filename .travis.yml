@@ -23,7 +23,7 @@ after_success:
 
 before_deploy:
 - export VERSION=`./gradlew -q version`
-- export DOCDIR="build/docs/"
+- export DOCDIR="build/docs/asciidocPdf"
 - export DOCFILE="file"
 - mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
 - export BINARY="${BINDIR}/${BINFILE}.jar"
