@@ -15,8 +15,62 @@ script:
  - ./gradlew check
  - sonar-scanner
 
+
 after_success:
   - ./gradlew jacocoTestReport coveralls
+  - ./gradlew jar
+  - ./gradlew asciidoctor
+
+before_deploy:
+- export VERSION=`./gradlew -q version`
+- export DOCDIR="build/docs/"
+- export DOCFILE="file"
+- mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
+- export BINARY="${BINDIR}/${BINFILE}.jar"
+- export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
+- echo binary is ${BINARY}
+- echo documentation is ${DOCUMENTATION}
+- |
+  if [ $TRAVIS_BRANCH = "develop" ]
+  then
+    export TRAVIS_TAG=v${VERSION}-SNAPSHOT
+  else
+    export TRAVIS_TAG=v${VERSION}
+  fi
+- |
+  if [ $TRAVIS_BRANCH = "develop" ]
+  then
+    git tag ${TRAVIS_TAG}
+    echo tag ${TRAVIS_TAG}
+  else
+    echo no tag
+  fi
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file:
+      - ${BINARY}
+      - ${DOCUMENTATION}
+    skip_cleanup: true
+    overwrite: true
+    draft: false
+    on:
+      branch: master
+      tags: true
+    name: $TRAVIS_TAG
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file:
+      - ${BINARY}
+      - ${DOCUMENTATION}
+    skip_cleanup: true
+    overwrite: true
+    draft: true
+    on:
+      branch: develop
+      tags: false
+    name: $TRAVIS_TAG
 
 notifications:
   email:

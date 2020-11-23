@@ -12,9 +12,6 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
-
-    id 'jacoco'
-    id 'com.github.kt3k.coveralls' version '2.10.2'
     id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 
@@ -78,8 +75,14 @@ dependencies {
     asciidoctorGems 'rubygems:rouge:3.15.0'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
 asciidoctorPdf {
-  dependsOn asciidoctorGemsPrepare
+//   dependsOn asciidoctorGemsPrepare
 
   baseDirFollowsSourceFile()
 
@@ -87,9 +90,10 @@ asciidoctorPdf {
     requires 'rouge'
     attributes 'build-gradle': file('build.gradle'),
         'sourcedir': project.sourceSets.main.java.srcDirs[0],
+        'outputDir': file("${buildDir}/docs"),
         'endpoint-url': 'http://example.org',
         'source-highlighter': 'rouge',
-        'imagesdir': './images',
+        //'imagesdir': './images',
         'toc': 'left',
         'icons': 'font',
         'idprefix': '',
@@ -99,15 +103,15 @@ asciidoctorPdf {
 // alias
 task asciidoctor(dependsOn: asciidoctorPdf)
 
-application {
-    // Define the main class for the application.
-    mainClassName = 'com.smartmapper.AppMain'
-}
-
-
 
 sonarqube {
     properties {
         property "sonar.projectKey", "smartmapperproject_SmartMapperBackend"
     }
+}
+
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'com.smartmapper.AppMain'
 }
