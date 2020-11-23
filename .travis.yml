@@ -18,13 +18,13 @@ script:
 
 after_success:
   - ./gradlew jacocoTestReport coveralls
-  - ./gradlew jar
+  - ./gradlew bootJar
   - ./gradlew asciidoctor
 
 before_deploy:
 - export VERSION=`./gradlew -q version`
-- export BINDIR="build"
-- export BINFILE="smartmapper-${VERSION}"
+- export BINDIR="build/libs"
+- export BINFILE="com.smartmapper-${VERSION}"
 - export DOCDIR="build/docs/asciidocPdf"
 - export DOCFILE="file"
 - mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
