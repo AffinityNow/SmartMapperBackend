@@ -10,13 +10,13 @@ addons:
 
 sudo: false
 
-script: "sbt clean coverage test"
+script:
  - chmod a+x ./gradlew
  - ./gradlew check
  - sonar-scanner
 
 after_success:
-  - ./gradlew jacocoRootReport coveralls
+  - ./gradlew jacocoTestReport coveralls
 
 notifications:
   email:
