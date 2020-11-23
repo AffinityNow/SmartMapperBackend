@@ -18,8 +18,13 @@ plugins {
     // AsciiDoctor (doc)
     id 'org.asciidoctor.jvm.pdf' version '3.2.0'
     id 'org.asciidoctor.jvm.gems' version '3.2.0'
+
     //Sonar
     id "org.sonarqube" version "3.0"
+
+    //Coveralls
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
 group ='com.smartmapper'
@@ -40,6 +45,8 @@ class VersionPlugin implements Plugin<Project> {
 
 apply plugin: 'application'
 apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: VersionPlugin
 
 
@@ -101,6 +108,13 @@ task asciidoctor(dependsOn: asciidoctorPdf)
 sonarqube {
     properties {
         property "sonar.projectKey", "smartmapperproject_SmartMapperBackend"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
     }
 }
 
