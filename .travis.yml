@@ -13,13 +13,14 @@ sudo: false
 script:
  - chmod a+x ./gradlew
  - ./gradlew check
- - ./gradlew test jacocoTestReport coveralls
+ - ./gradlew jacocoTestReport coveralls
  - sonar-scanner
 
 
 after_success:
   - ./gradlew bootJar
   - ./gradlew asciidoctor
+  - curl -F 'json_file=@build/coveralls/report.json' 'https://coveralls.io/api/v1/jobs'
 
 before_deploy:
 - export VERSION=`./gradlew -q version`
