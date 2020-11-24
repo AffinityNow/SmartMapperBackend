@@ -123,6 +123,11 @@ jacocoTestReport {
     }
 }
 
+coveralls {
+    saveAsFile = true
+    sendToCoveralls = false
+}
+
 application {
     // Define the main class for the application.
     mainClassName = 'com.smartmapper.AppMain'
