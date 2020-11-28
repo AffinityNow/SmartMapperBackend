@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import org.springframework.lang.Nullable;
+
 @Entity
 public class Adresse {
 
@@ -24,15 +28,11 @@ public class Adresse {
     private String codePostal;
     private String ville;
     private String pays;
+    private String telephone;
     @OneToOne(targetEntity = PointInteret.class)
+    @JsonBackReference
+    @Nullable
     private PointInteret point;
-
-    public Adresse(String name, User user, String lines, PointInteret point) {
-        this.name = name;
-        this.user = user;
-        this.lines = lines;
-        this.point = point;
-    }
 
     public String getName() {
         return name;
@@ -96,6 +96,7 @@ public class Adresse {
 
     public void setPoint(PointInteret point) {
         this.point = point;
+        point.setAdresse(this);
     }
 
     @Override
@@ -166,5 +167,16 @@ public class Adresse {
 
     public Adresse() {
     }
-    
+
+    Adresse(String name, User user, String lines, String cedex, String codePostal, String ville, String pays, PointInteret point, String telephone) {
+        this.name = name;
+        this.user = user;
+        this.lines = lines;
+        this.cedex = cedex;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.pays = pays;
+        this.point = point;
+        this.telephone = telephone;
+    }
 }

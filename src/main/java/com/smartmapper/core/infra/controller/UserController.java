@@ -34,8 +34,15 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
-        return service.findById(id);
+    public User getUserById(@PathVariable Long id) {
+        User rUser = new User();
+        try {
+            service.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rUser;
+
     }
 
     @GetMapping("/user/{id}/itineraires")

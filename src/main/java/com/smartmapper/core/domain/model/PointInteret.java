@@ -1,33 +1,54 @@
 package com.smartmapper.core.domain.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import org.springframework.lang.Nullable;
+
+
 @Entity
 public class PointInteret {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
-    @OneToOne
+    @OneToOne(targetEntity = Coordonnees.class, cascade=CascadeType.ALL)
+    @JsonManagedReference
     private Coordonnees coordonnes;
+    @Column(length = 1000)
     private String description;
-    @ManyToOne(targetEntity=Itineraire.class)
+    @ManyToOne(targetEntity = Itineraire.class, cascade=CascadeType.ALL)
     private Itineraire itineraire;
-    @OneToOne(targetEntity=Adresse.class)
-    private Itineraire adresse;    
+    @OneToOne(targetEntity = Adresse.class, cascade=CascadeType.ALL)
+    @JsonManagedReference
+    private Adresse adresse;
+    @OneToMany(targetEntity=Categorie.class, mappedBy="point", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @Nullable
+    @JsonManagedReference
+    private Set<Categorie> categories;
 
-
-    public PointInteret(String name, Coordonnees coordonnes, String description) {
-        this.name = name;
-        this.coordonnes = coordonnes;
-        this.description = description;
-    }
     
+
+    public Set<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Categorie> categories) {
+        this.categories = categories;
+    }
 
     public String getName() {
         return name;
@@ -91,8 +112,50 @@ public class PointInteret {
         return true;
     }
 
+    public void addCategorie(Categorie c) {
+        categories.add(c);
+        c.setPointInteret(this);
+    }
+
+    public void removeCategorie(Categorie c) {
+        categories.remove(c);
+        c.setPointInteret(null);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Itineraire getItineraire() {
+        return itineraire;
+    }
+
+    public void setItineraire(Itineraire itineraire) {
+        this.itineraire = itineraire;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    PointInteret(String name, Coordonnees coordonnes, String description, Itineraire itineraire, Adresse adresse,
+            Set<Categorie> categories) {
+        this.name = name;
+        this.coordonnes = coordonnes;
+        this.description = description;
+        this.itineraire = itineraire;
+        this.adresse = adresse;
+        this.categories = categories;
+    }
+
     public PointInteret() {
     }
-    
-    
 }
