@@ -9,6 +9,7 @@ import com.smartmapper.core.domain.model.PointInteret;
 import com.smartmapper.core.infra.service.serviceImpl.PointInteretService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,7 @@ public class PointInteretController {
         return service.getById(id);
     }
 
+    @CrossOrigin
     @GetMapping("/point-interet/categorie/{categorie}")
     public List<PointInteret> getPointInteretByCategorie(@PathVariable String categorie) {
         return service.getByCategory(categorie);
