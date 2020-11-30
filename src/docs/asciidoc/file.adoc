@@ -106,20 +106,28 @@ POST / GET / PUT / DELETE
 |Post
 |Créer un point d'intérêt
 
-|/point
+|/point-interet
 |Get
 |Récupérer les points créés
 
-|/point/{id}
+|/point-interet/{id}
 |Get
 |Récupérer les infos d'un point
 
-|/point/{id}
+|"/point-interet/categorie/{categorie}
+|Get
+|Récupérer les points d'une categorie
+
+|"/point-interet/{id}/categorie"
+|Get
+|Récupérer les categories d'un point
+
+|/point-interet/{id}
 |Put
 |Modifier les infos d'un point
 (mettre en fav, mettre en adresse perso, note..., pas les coordonnées)
 
-|/point
+|/point-interet
 |Delete
 |Supprimer un point d'intérêt
 
