@@ -6,50 +6,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import org.springframework.lang.Nullable;
+
 
 @Entity
 public class Coordonnees {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
 	private Long id;
-    private Double x;
-    private Double y;
-    @OneToOne
+    private Double longitude;
+    private Double latitude;
+    @OneToOne(targetEntity = PointInteret.class)
+    @Nullable
+    @JsonBackReference
     private PointInteret point;
 
 
-
-    public Double getX() {
-        return x;
-    }
-
-    public void setX(Double x) {
-        this.x = x;
-    }
-
-
-    public Double getY() {
-        return y;
-    }
-
-    public void setY(Double y) {
-        this.y = y;
-    }
-
-    public Coordonnees(Double x, Double y) {
-        this.x = x;
-        this.y = y;
-    }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Coordonnees [x=");
-        builder.append(x);
+        builder.append(longitude);
         builder.append(", y=");
-        builder.append(y);
+        builder.append(latitude);
         builder.append("]");
         return builder.toString();
     }
@@ -58,8 +41,8 @@ public class Coordonnees {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((x == null) ? 0 : x.hashCode());
-        result = prime * result + ((y == null) ? 0 : y.hashCode());
+        result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
+        result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
         return result;
     }
 
@@ -72,19 +55,58 @@ public class Coordonnees {
         if (getClass() != obj.getClass())
             return false;
         Coordonnees other = (Coordonnees) obj;
-        if (x == null) {
-            if (other.x != null)
+        if (longitude == null) {
+            if (other.longitude != null)
                 return false;
-        } else if (!x.equals(other.x))
+        } else if (!longitude.equals(other.longitude))
             return false;
-        if (y == null) {
-            if (other.y != null)
+        if (latitude == null) {
+            if (other.latitude != null)
                 return false;
-        } else if (!y.equals(other.y))
+        } else if (!latitude.equals(other.latitude))
             return false;
         return true;
     }
 
     public Coordonnees() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public PointInteret getPoint() {
+        return point;
+    }
+
+    public void setPoint(PointInteret point) {
+        this.point = point;
+        point.setCoordonnes(this);
+    }
+
+    public Coordonnees(Double longitude, Double latitude, PointInteret point) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.point = point;
     }
 }

@@ -1,91 +1,171 @@
-= AsciiDoc Article Title
-Firstname Lastname <author@asciidoctor.org>
-1.0, July 29, 2014, Asciidoctor 1.5 article template
-:toc:
-:icons: font
-:quick-uri: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+= SmartMapper DOC
+Smart Mapper <SmartMapperProject@gmail.com>
 
-Content entered directly below the header but before the first section heading is called the preamble.
+== Utilisation et installation
+=== Utilisation
 
-== First level heading
+Le projet SmartMapper une partie front _https://github.com/smartmapperproject/SmartMapperFrontend.git_
+et une partie back _https://github.com/smartmapperproject/SmartMapperBackend_.
 
-This is a paragraph with a *bold* word and an _italicized_ word.
+Le back est écrit en Java et quand au front il s'agit d'une application angular donc
+vous devrez avoir sur votre machine une version assez récente de Java (8 minimum), gradle (6) ainsi que Node (14).
 
-.Image caption
-image::image-file-name.png[I am the image alt text.]
+=== Installation
+* FRONT:
+Il suffira d'execute simplement la commande : *ng serve* pour lancer le serveur.
+Naviguez vers http://localhost:4200/. L'application se rechargera automatiquement si vous modifiez l'un des fichiers sources.
 
-This is another paragraph.footnote:[I am footnote text and will be displayed at the bottom of the article.]
+* BACK :
+Il suffira d'executer simplement la commande : *gradle clean build* pour lancer le serveur.
+Une fois cela effectuer le serveur sera en marche et vous pourrz consulter la liste des End Points via _http://localhost:8080/swagger-ui.html_
 
-=== Second level heading
+== Routes et End Points
 
-.Unordered list title
-* list item 1
-** nested list item
-*** nested nested list item 1
-*** nested nested list item 2
-* list item 2
+Nous aurons quatre services principaux :
 
-This is a paragraph.
+* Service USER
+* Service ITINERAIRE
+* Service POINT INTERET
+* Service STATISTIQUE
 
-.Example block title
-====
-Content in an example block is subject to normal substitutions.
-====
-
-.Sidebar title
+==== SERVICE USER
 ****
-Sidebars contain aside text and are subject to normal substitutions.
+POST / GET / PUT / DELETE
+****
+|===
+|URL |METHODE |ACTION
+
+|/user
+|Post
+|Céation d'un utilisateur
+
+|/user
+|Get
+|Récupérer la liste des utilisateurs créés
+
+|/user/{id}
+|Get
+|Récupérer les infos d'un utilisateur
+
+|/user/{id}/itinéraires
+|Get
+|Récupérer l’historique des itinéraires d’un user
+
+| /user/{id}/adresses
+|Get
+|Récupérer les lieux enregistrés d’un user
+
+|/user/{id}
+|Put
+|Mettre à jour les infos d'un utilisateur
+
+|/user{id}
+|Delete
+|Supprimer un utilisateur
+
+|===
+==== SERVICE ITINERAIRE
+****
+POST / GET / PUT / DELETE
 ****
 
-==== Third level heading
-
-[#id-for-listing-block]
-.Listing block title
-----
-Content in a listing block is subject to verbatim substitutions.
-Listing block content is commonly used to preserve code input.
-----
-
-===== Fourth level heading
-
-.Table title
 |===
-|Column heading 1 |Column heading 2
+|URL |METHODE |ACTION
 
-|Column 1, row 1
-|Column 2, row 1
+|/itineraire
+|Post
+|Créer un itinéraire
 
-|Column 1, row 2
-|Column 2, row 2
+|/itinéraire/{id}
+|Put
+|Modifier un itinéraire
+
+|/itinéraire
+|Get
+|Récupérer les itinéraires créer
+
+|/itinéraire/{id}
+|Get
+|Récupérer un itinéraire
+
+|/itinéraire/{id}
+|Delete
+|Supprimer un itinéraire
+
 |===
 
-====== Fifth level heading
 
-[quote, firstname lastname, movie title]
-____
-I am a block quote or a prose excerpt.
-I am subject to normal substitutions.
-____
+==== SERVICE POINT INTERET
+****
+POST / GET / PUT / DELETE
+****
+|===
+|URL |METHODE |ACTION
 
-[verse, firstname lastname, poem title and more]
-____
-I am a verse block.
-  Indents and endlines are preserved in verse blocks.
-____
+|/point
+|Post
+|Créer un point d'intérêt
 
-== First level heading
+|/point-interet
+|Get
+|Récupérer les points créés
 
-TIP: There are five admonition labels: Tip, Note, Important, Caution and Warning.
+|/point-interet/{id}
+|Get
+|Récupérer les infos d'un point
 
-// I am a comment and won't be rendered.
+|"/point-interet/categorie/{categorie}
+|Get
+|Récupérer les points d'une categorie
 
-. ordered list item
-.. nested ordered list item
-. ordered list item
+|"/point-interet/{id}/categorie"
+|Get
+|Récupérer les categories d'un point
 
-The text at the end of this sentence is cross referenced to <<_third_level_heading,the third level heading>>
+|/point-interet/{id}
+|Put
+|Modifier les infos d'un point
+(mettre en fav, mettre en adresse perso, note..., pas les coordonnées)
 
-== First level heading
+|/point-interet
+|Delete
+|Supprimer un point d'intérêt
 
-This is a link to the https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual].
-This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick Reference Guide].
+|===
+
+==== SERVICE STATISTIQUE
+****
+POST / GET / PUT / DELETE
+****
+
+|===
+|URL |METHODE |ACTION
+
+|/métrique
+|Post
+|Créer un métrique
+
+|/métrique
+|Get
+|Récupérer la liste des métriques
+
+| /métrique/{id}
+|Get
+|Récupérer une métrique
+
+|/métrique/{id}
+|Put
+|Modifier une métrique
+
+|/métrique/{id}
+|Delete
+|Supprimer une métrique
+
+|===
+
+== Diagramme de classes
+image::../Diagramm.svg[Diagramme de classe du projet]
+
+== Site Web Projet
+
+_https://smartmapperproject.github.io/SmartMapperFrontend/_
