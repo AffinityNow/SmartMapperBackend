@@ -6,7 +6,6 @@ import com.smartmapper.core.domain.builder.PointInteretBuilder;
 
 public class PointInteretBuilderImpl implements PointInteretBuilder {
 
-    private Long id;
     private String name;
     private Coordonnees coordonnes;
     private String description;
