@@ -59,8 +59,8 @@ deploy:
     overwrite: true
     draft: false
     on:
-      branch: master
       tags: true
+      all_branches: true
     name: $TRAVIS_TAG
   - provider: releases
     api_key: $GITHUB_TOKEN
