@@ -46,7 +46,7 @@ proche de moi, pour cela je me rend sur l'application, je configure mon itinéra
 logo correspondant à la catégorie recherché. Dès lors je vois sur la carte un ping m'indiquant
 le point le plus proche de ma position.
 
-
+image::../POI.png[POI proche]
 == Routes et End Points
 
 Nous aurons quatre services principaux :
@@ -195,6 +195,9 @@ Ci-dessous une liste des "endpoints" provenant de l'API Swagger
 image::../endpoints.png[Swagger EndPoints]
 == Diagramme de classes
 image::../Diagramm.svg[Diagramme de classe du projet]
+
+== Diagramme de Séquence
+image::../DiagrammPOI.png[Diagramme de séquence]
 
 == Site Web Projet
 
