@@ -6,10 +6,10 @@ participant ": Map" as map
 
 
 activate utilisateur
-
-utilisateur -> map: Carte (géolocalisation)
-utilisateur -> map: Itineraire (Depart - Arrivé)
 activate map
+utilisateur -> map: LeafletMap()
+utilisateur -> map: RoutingMachine()
+
 map -> map : calcul itinéraire {rayon}
 deactivate map
 alt rayon > limite

@@ -203,3 +203,6 @@ image::../diagrammSequence2.png[Diagramme de séquence]
 == Site Web Projet
 
 _https://smartmapperproject.github.io/SmartMapperFrontend/_
+
+== Retours & Feedback
+image::../retours.png[Diagramme de séquence]

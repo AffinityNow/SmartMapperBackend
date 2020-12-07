@@ -4,7 +4,9 @@ actor "Utilisateur" as utilisateur
 participant ": Front" as frontend
 participant ": Back" as backend
 
+activate frontend
 activate utilisateur
+utilisateur<-- frontend: displayCategoryList()
 utilisateur -> frontend: choose(category)
 
 activate frontend
@@ -13,7 +15,6 @@ frontend -> backend: GET/POI{category}
 
 backend --> frontend: ListPOIByCategory()
 deactivate backend
-utilisateur<-- frontend: displayCategoryList()
 utilisateur<-- frontend: displayListPOIByCategory()
 deactivate frontend
 deactivate utilisateur
