@@ -1,0 +1,25 @@
+@startuml
+!include style/commons.style
+
+actor "Utilisateur" as utilisateur
+participant ": Map" as map
+
+
+activate utilisateur
+
+utilisateur -> map: Carte (géolocalisation)
+utilisateur -> map: Itineraire (Depart - Arrivé)
+activate map
+map -> map : calcul itinéraire {rayon}
+deactivate map
+alt rayon > limite
+    utilisateur <-- map : interdit (cerle rouge)
+else
+    utilisateur <-- map : permis (cerle bleu)
+end
+
+
+deactivate utilisateur
+
+
+@enduml
