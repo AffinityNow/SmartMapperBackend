@@ -28,6 +28,8 @@ before_deploy:
   - 'export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"'
   - 'echo binary is ${BINARY}'
   - 'echo documentation is ${DOCUMENTATION}'
+  - git config --local user.name "SmartMapper"
+  - git config --local user.email "smartmapperproject@gmail.com"
   - |
     if [ $TRAVIS_BRANCH = "develop" ]
     then
@@ -36,7 +38,7 @@ before_deploy:
       export TRAVIS_TAG=v${VERSION}
     fi
   - |
-    if [ $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH = "master" ]
+    if [ $TRAVIS_BRANCH = "develop"] || [$TRAVIS_BRANCH = "master" ]
     then
       git tag ${TRAVIS_TAG}
       echo tag ${TRAVIS_TAG}
