@@ -58,10 +58,10 @@ deploy:
     skip_cleanup: true
     overwrite: true
     draft: false
-    on:
-      branch: master
-      tags: true
-    name: $TRAVIS_TAG
+  on:
+    branch: master
+    tags: true
+  name: $TRAVIS_TAG
   - provider: releases
     api_key: $GITHUB_TOKEN
     file:
@@ -70,10 +70,10 @@ deploy:
     skip_cleanup: true
     overwrite: true
     draft: true
-    on:
-      branch: develop
-      tags: false
-    name: $TRAVIS_TAG
+  on:
+    branch: develop
+    tags: false
+  name: $TRAVIS_TAG
 
 notifications:
   email:
