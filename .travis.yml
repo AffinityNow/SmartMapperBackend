@@ -3,7 +3,7 @@ branches:
   only:
     - master
     - develop
-    - v[0-9]*
+    - /v[0-9]*/
 addons:
   sonarcloud:
     organization: smartmapperproject
