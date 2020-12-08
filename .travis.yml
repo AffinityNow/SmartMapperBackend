@@ -7,66 +7,60 @@ addons:
   sonarcloud:
     organization: smartmapperproject
     token: $SONAR_TOKEN
-
 sudo: false
-
 script:
- - chmod a+x ./gradlew
- - ./gradlew check
- - ./gradlew jacocoTestReport coveralls
- - sonar-scanner
-
-
+  - chmod a+x ./gradlew
+  - ./gradlew check
+  - ./gradlew jacocoTestReport coveralls
+  - sonar-scanner
 after_success:
   - ./gradlew bootJar
   - ./gradlew asciidoctor
   - curl -F 'json_file=@build/coveralls/report.json' 'https://coveralls.io/api/v1/jobs'
-
 before_deploy:
-- export VERSION=`./gradlew -q version`
-- export BINDIR="build/libs"
-- export BINFILE="com.smartmapper-${VERSION}"
-- export DOCDIR="build/docs/asciidocPdf"
-- export DOCFILE="file"
-- mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
-- export BINARY="${BINDIR}/${BINFILE}.jar"
-- export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
-- echo binary is ${BINARY}
-- echo documentation is ${DOCUMENTATION}
-- |
-  if [ $TRAVIS_BRANCH = "develop" ]
-  then
-    export TRAVIS_TAG=v${VERSION}-SNAPSHOT
-  else
-    export TRAVIS_TAG=v${VERSION}
-  fi
-- |
-  if [ $TRAVIS_BRANCH = "develop" ]
-  then
-    git tag ${TRAVIS_TAG}
-    echo tag ${TRAVIS_TAG}
-  else
-    echo no tag
-  fi
-
+  - export VERSION=`./gradlew -q version`
+  - export BINDIR="build/libs"
+  - 'export BINFILE="com.smartmapper-${VERSION}"'
+  - export DOCDIR="build/docs/asciidocPdf"
+  - export DOCFILE="SmartMapper"
+  - 'mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"'
+  - 'export BINARY="${BINDIR}/${BINFILE}.jar"'
+  - 'export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"'
+  - 'echo binary is ${BINARY}'
+  - 'echo documentation is ${DOCUMENTATION}'
+  - |
+    if [ $TRAVIS_BRANCH = "develop" ]
+    then
+      export TRAVIS_TAG=v${VERSION}-SNAPSHOT
+    else
+      export TRAVIS_TAG=v${VERSION}
+    fi
+  - |
+    if [ $TRAVIS_BRANCH = "develop" ]
+    then
+      git tag ${TRAVIS_TAG}
+      echo tag ${TRAVIS_TAG}
+    else
+      echo no tag
+    fi
 deploy:
   - provider: releases
     api_key: $GITHUB_TOKEN
     file:
-      - ${BINARY}
-      - ${DOCUMENTATION}
+      - '${BINARY}'
+      - '${DOCUMENTATION}'
     skip_cleanup: true
     overwrite: true
     draft: false
     on:
+      branch: master
       tags: true
-      all_branches: true
     name: $TRAVIS_TAG
   - provider: releases
     api_key: $GITHUB_TOKEN
     file:
-      - ${BINARY}
-      - ${DOCUMENTATION}
+      - '${BINARY}'
+      - '${DOCUMENTATION}'
     skip_cleanup: true
     overwrite: true
     draft: true
@@ -74,10 +68,9 @@ deploy:
       branch: develop
       tags: false
     name: $TRAVIS_TAG
-
 notifications:
   email:
     recipients:
-     - smartmapperproject@gmail.com
+      - smartmapperproject@gmail.com
     on_success: always
     on_failure: always
