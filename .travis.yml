@@ -50,7 +50,7 @@ before_deploy:
       git config --global user.name "Travis CI"
       git tag ${TRAVIS_TAG} -a -m "Generated tag from TravisCI for build $TRAVIS_COMMIT"
       git push -q https://github.com/smartmapperproject/SmartMapperBackend --tags
-
+    fi
 deploy:
   - provider: releases
     api_key: $GITHUB_TOKEN
