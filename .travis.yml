@@ -27,7 +27,7 @@ before_deploy:
 - export BINDIR="build/libs"
 - export BINFILE="com.smartmapper-${VERSION}"
 - export DOCDIR="build/docs/asciidocPdf"
-- export DOCFILE="file"
+- export DOCFILE="SmartMapper"
 - mv "${DOCDIR}/${DOCFILE}.pdf" "${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
 - export BINARY="${BINDIR}/${BINFILE}.jar"
 - export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"
