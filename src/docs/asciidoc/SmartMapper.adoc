@@ -197,8 +197,12 @@ image::../endpoints.png[Swagger EndPoints]
 image::../Diagramm.svg[Diagramme de classe du projet]
 
 == Diagramme de Séquence
-image::../DiagrammPOI.png[Diagramme de séquence]
+image::../diagrammSequence.png[Diagramme de séquence]
+image::../diagrammSequence2.png[Diagramme de séquence]
 
 == Site Web Projet
 
 _https://smartmapperproject.github.io/SmartMapperFrontend/_
+
+== Retours & Feedback
+image::../retours.png[Diagramme de séquence]
