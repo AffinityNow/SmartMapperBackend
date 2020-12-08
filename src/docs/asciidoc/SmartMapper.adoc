@@ -19,6 +19,34 @@ Naviguez vers http://localhost:4200/. L'application se rechargera automatiquemen
 Il suffira d'executer simplement la commande : *gradle clean build* pour lancer le serveur.
 Une fois cela effectuer le serveur sera en marche et vous pourrz consulter la liste des End Points via _http://localhost:8080/swagger-ui.html_
 
+== Les Fonctionalités de SmartMapper
+
+Aujourd'hui avec la version V1.0 de SmartMapper on peut :
+
+1. Avoir la possibilté d'être géolocalisé sur la carte grâce à un ping, via le navigateur internet.
+
+2. Avoir un apercu d'un itinéraire entre un point de départ (A) et d'arrivée (B) ainsi que les routes à emprunter, tout en ayant la possibilté de rajouter d'autres "étapes" sur le chemin.
+
+3. Avoir l'emplacement d'un point d'intérêt (POI) le plus proche de notre point de départ ou d'arrivée et cela sur de nombreuses catégories (fleuristes, boulageries, lieux de cultes, écoles, supermachés etc...).
+
+
+== Scénario d'utilisation
+=== Cas Numéro 1:
+Je souhaite aller de cher moi à l'université de Nanterre et savoir si en cette peridode de confinement mon déplacement
+est autorisé par rapport aux règles de la COVID-19, pour cela je me rend sur l'application SmartMapper je renseigne moint point de départ (ou géolocalisation)
+mon point d'arrivé et je valide. Dès lors je vois l'itinéraire s'afficher, si il se trouve dans un rayon autorisé le gouvernement, représenté par un cercle (bleu si valide, rouge sinon) sur la carte,
+je peux me rendre à ma destination.
+
+image::../Valid.png[Chemin valide]
+image::../Invalid.png[Chemin invalide]
+
+=== Cas Numéro 2:
+Je souhaite aller d'un point A un point B en passant par un point d'intérêt (C) le plus
+proche de moi, pour cela je me rend sur l'application, je configure mon itinéraire et j'appuie sur le
+logo correspondant à la catégorie recherché. Dès lors je vois sur la carte un ping m'indiquant
+le point le plus proche de ma position.
+
+image::../POI.png[POI proche]
 == Routes et End Points
 
 Nous aurons quatre services principaux :
@@ -162,9 +190,14 @@ POST / GET / PUT / DELETE
 |Supprimer une métrique
 
 |===
+Ci-dessous une liste des "endpoints" provenant de l'API Swagger
 
+image::../endpoints.png[Swagger EndPoints]
 == Diagramme de classes
 image::../Diagramm.svg[Diagramme de classe du projet]
+
+== Diagramme de Séquence
+image::../DiagrammPOI.png[Diagramme de séquence]
 
 == Site Web Projet
 
