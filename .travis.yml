@@ -36,12 +36,10 @@ before_deploy:
       export TRAVIS_TAG=v${VERSION}
     fi
   - |
-    if [ $TRAVIS_BRANCH = "develop" ]
+    if [ $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH = "master" ]
     then
       git tag ${TRAVIS_TAG}
       echo tag ${TRAVIS_TAG}
-    else
-      echo no tag
     fi
 deploy:
   - provider: releases
