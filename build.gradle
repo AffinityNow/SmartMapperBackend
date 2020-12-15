@@ -28,7 +28,7 @@ plugins {
 }
 
 group ='com.smartmapper'
-version '1.0-beta.1'
+version '1.0-beta.1 '
 
 // plugin to get the version of the project
 // from https://stackoverflow.com/questions/13198358/how-to-get-project-version-in-custom-gradle-plugin
