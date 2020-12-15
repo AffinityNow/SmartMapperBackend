@@ -29,8 +29,6 @@ before_deploy:
   - 'export DOCUMENTATION="${DOCDIR}/${DOCFILE}-${VERSION}.pdf"'
   - 'echo binary is ${BINARY}'
   - 'echo documentation is ${DOCUMENTATION}'
-  - git config --local user.name "SmartMapper"
-  - git config --local user.email "smartmapperproject@gmail.com"
   - |
     if [ $TRAVIS_BRANCH = "develop" ]
     then
