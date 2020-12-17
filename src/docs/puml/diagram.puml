@@ -1,4 +1,4 @@
-"@startuml diagram"
+@startuml diagram
 !include style/commons.style
 namespace src {
     namespace main{
@@ -124,4 +124,4 @@ src.main.java.com.smartmapper.core.domain.model.Adress *..>  src.main.java.com.s
 src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adress : "contains"
 
 
-"@enduml"
+@enduml

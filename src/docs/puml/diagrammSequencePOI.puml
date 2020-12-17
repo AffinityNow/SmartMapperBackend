@@ -1,0 +1,36 @@
+@startuml
+!include style/commons.style
+
+mainframe POI Diagram
+
+actor User #blue
+participant UI #pink
+participant POIService #orange
+participant APIRest #tan
+
+activate POIService #green
+POIService -> UI: displayListOfCategories
+activate UI #green
+
+activate User #green
+User -> UI: choose(category)
+
+UI -> POIService: commit choice
+deactivate UI
+activate APIRest #green
+
+POIService -> APIRest: "HTTP" GET/POI/category
+APIRest --> POIService:"HTTP" 200 OK response
+
+POIService -> UI: provide resource
+activate UI #green
+deactivate APIRest
+deactivate POIService
+
+UI -> User: displayListPOIByCategory
+
+deactivate POIService
+deactivate UI
+deactivate User
+
+@enduml
