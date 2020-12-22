@@ -36,7 +36,7 @@ jobs:
         run: ./gradlew sonarqube --info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GH }}
       - name: Get permission for gradle wrapper
         run: chmod a+x ./gradlew
       - name: Build with Gradle
