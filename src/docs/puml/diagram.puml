@@ -1,127 +1,231 @@
 "@startuml diagram"
 !include style/commons.style
-namespace src {
-    namespace main{
-        namespace java{
-            namespace com{
-                namespace smartmapper{
-                    namespace core{
-                        namespace domain{
-                            namespace model{
-                                class User{
-                                    + name :string
-                                    + login : string
-                                    + password : string
-                                    + favori : Map<string, Favori>
-                                    + adresses : Map<string, PointOfInterest>
-                                    + this(name, login, password)
-                                    + getName() : string
-                                    + setName(string name) : void
-                                    + getLogin() : string
-                                    + setLogin(string login) : void
-                                    + getPassword : string
-                                    + setPassword(string password) : string
-                                    + getFavoris() : Map<string, Favori>
-                                    + setFavoris(Map<string, Favori> favori) : void
-                                    + getAdresses() : Map<string, Favori>
-                                    + setAdresses(Map<string, Favori> favori) : void  
-                                }
-                                
-                                class Coordinates   {
-                                    + X : double
-                                    + Y : double
-                                    + this(double X, double Y)
-                                    + getX() : double
-                                    + setX(double x)
-                                    + getY() : double
-                                    + setY(double y)
-                                }
-                                
-                                class PointOfInterest {
-                                    + name : string
-                                    + coordinates : Coordinates
-                                    + description : string
-                                    + this(name, Coordinates, description)
-                                    + getName() : string
-                                    + setName(string name) : void
-                                    + getCoordinates() : Coordinates
-                                    + setCoordinates(string coordinates) : void
-                                    + getDescription() : string
-                                    + setDescription(string description) : void
-                                }
+namespace src.main.java.com.smartmapper {
+    namespace core{
+        namespace domain{
+            namespace model{
+                ' class User{
+                '     + id: long
+                '     + name :string
+                '     + login : string
+                '     + password : string
+                '     + favori : Map<string, Favori>
+                '     + Adressees : Map<string, Adressee>
+                '     + itineraires : Map<string, Adressee>
+                '     + this(name, login, password)
+                '     + getName() : string
+                '     + setName(string name) : void
+                '     + getLogin() : string
+                '     + setLogin(string login) : void
+                '     + getPassword : string
+                '     + setPassword(string password) : string
+                '     + getFavoris() : Map<string, Favori>
+                '     + setFavoris(Map<string, Favori> favori) : void
+                '     + getAdressees() : Map<string, Favori>
+                '     + setAdressees(Map<string, Favori> favori) : void  
+                ' }
+                
+                class Coordinates   {
+                    + X : double
+                    + Y : double
+                    + this(double X, double Y)
+                    + getX() : double
+                    + setX(double x)
+                    + getY() : double
+                    + setY(double y)
+                }
+                
+                class PointInteret {
+                    + name : string
+                    + coordinates : Coordinates
+                    + description : string
+                    + this(name, Coordinates, description)
+                    + getName() : string
+                    + setName(string name) : void
+                    + getCoordinates() : Coordinates
+                    + setCoordinates(string coordinates) : void
+                    + getDescription() : string
+                    + setDescription(string description) : void
+                }
 
-                                class Route {
-                                    + name : string
-                                    + pointOfInterest : Map<string, PointOfInterest>
-                                    + this(name, pointOfinterest)
-                                    + getName() : string
-                                    + setName(string name) : void
-                                    + getPointOfInterests() : Map<string, PointOfInterest>
-                                    + setPointOfInterest(PointOfInterest p) : void
-                                }
+                class Itineraire {
+                    + name : string
+                    + PointInteret : Map<string, PointInteret>
+                    + this(name, PointInteret)
+                    + getName() : string
+                    + setName(string name) : void
+                    + getPointInterets() : Map<string, PointInteret>
+                    + setPointInteret(PointInteret p) : void
+                }
 
-                                class Favori extends src.main.java.com.smartmapper.core.domain.model.PointOfInterest{
-                                    + note : Note
-                                    + this(name, Coordinates, description, Note)
-                                    + getNote() : Note
-                                    + setNote(Note note) : void
-                                }
+                ' class Favori extends src.main.java.com.smartmapper.core.domain.model.PointInteret{
+                '     + note : Note
+                '     + this(name, Coordinates, description, Note)
+                '     + getNote() : Note
+                '     + setNote(Note note) : void
+                ' }
 
-                                class Adress {
-                                    + name : string
-                                    + user : User
-                                    + lines : string
-                                    + cedex : string
-                                    + postalCode : string
-                                    + city : string
-                                    + country : string
-                                    + point : pointOfInterest
-                                    + this(name, user, lines)
-                                    + getName() : string
-                                    + setName(string name) : void
-                                    + getUser() : User
-                                    + setUser(User user) : void
-                                    + getLines() : string
-                                    + setLines(string line1) : void
-                                    + getPostalCode() : postalCode
-                                    + setPostalCode(string postalCode) : void
-                                    + getCountry() : string
-                                    + setCountry(string country) : void
-                                    + getPoint() : pointOfInterest
-                                    + setPoint(pointOfInterest country) : void
-                                }
-                            }
-                            
-                            namespace exception{
-                            }
+                class Adresse {
+                    + name : string
+                    + user : User
+                    + lines : string
+                    + cedex : string
+                    + postalCode : string
+                    + city : string
+                    + country : string
+                    + point : PointInteret
+                    + this(name, user, lines)
+                    + getName() : string
+                    + setName(string name) : void
+                    + getUser() : User
+                    + setUser(User user) : void
+                    + getLines() : string
+                    + setLines(string line1) : void
+                    + getPostalCode() : postalCode
+                    + setPostalCode(string postalCode) : void
+                    + getCountry() : string
+                    + setCountry(string country) : void
+                    + getPoint() : PointInteret
+                    + setPoint(PointInteret country) : void
+                }
 
-                            namespace infra{
-                                namespace controller{
-                                }
-                                namespace dto{
-                                }
-                                namespace repository{
-                                }
-                                namespace service{
-                                    namespace serviceImpl{
-                                    }
-                                }
-                            }
+                class Categorie {
+                    + id : long
+                    + point : PointInteret
+                    + name : String
+                    + this()
+                    + getName() : string
+                    + setName(name: string name) : void
+                    + getId() : long
+                    + setId(id: long) : void
+                    + getPoint() : long
+                    + setPointInteret(point: PointInteret) : void
+                }
+
+                class AdresseeBuilderImpl implements src.main.java.com.smartmapper.core.domain.builder.AdresseeBuilder {
+                    + point : PointInteret
+                    + name : String
+                    + lines : String
+                    + cedex : String
+                    + codePostal : String
+                    + ville : String
+                    + pays : String
+                    + telephone : String
+                    + user : User
+                    + this(name: string, lines: string)
+                    + withCedex(cedex: string): AdresseeBuilder
+                    + withVille(ville: string): AdresseeBuilder
+                    + withPays(pays: string): AdresseeBuilder
+                    + withUser(user: User): AdresseeBuilder
+                    + withPoint(pInteret: PointInteret): AdresseeBuilder
+                    + withCodePostal(cPostal: string): AdresseeBuilder
+                    + withTelephone(telephone: string): AdresseeBuilder
+                    + build(): Adressee
+                }
+                
+                class PointInteretBuilderImpl implements src.main.java.com.smartmapper.core.domain.builder.PointInteretBuilder{
+                    + name : String
+                    + coordonnes : Coordonnees
+                    + description : String
+                    + itineraire : Itineraire
+                    + Adressee : Adressee
+                    + categories : Set<Categorie>
+                    + this(name: string, coordonnes: Coordonnees, description: string)
+                    + build(): Adressee
+                    + withItineraire(itineraire: Itineraire): PointInteretBuilder
+                    + withAdressee(Adressee: Adressee): PointInteretBuilder
+                    + withCategorie(categories: Set<Categorie>): PointInteretBuilder
+                    + build(): PointInteret
+                }
+            }
+
+            namespace builder {
+                interface AdresseeBuilder {
+                    withCedex(cedex: string): AdresseeBuilder
+                    withVille(ville: string): AdresseeBuilder
+                    withPays(pays: string): AdresseeBuilder
+                    withUser(user: User): AdresseeBuilder
+                    withPoint(pInteret: PointInteret): AdresseeBuilder
+                    withCodePostal(cPostal: string): AdresseeBuilder
+                    withTelephone(telephone: string): AdresseeBuilder
+                    build(): Adressee
+                }
+
+                interface PointInteretBuilder {
+                    withItineraire(itineraire: Itineraire): PointInteretBuilder
+                    withAdressee(Adressee: Adressee): PointInteretBuilder
+                    withCategorie(categories: Set<Categorie>): PointInteretBuilder
+                    build(): PointInteret
+                }
+            }
+
+            namespace infra{
+                namespace controller{
+                    class PointInteretController {
+                        - service: PointInteretService
+                        + this(service: PointInteretService)
+                        + getAllPointInterets(): List<PointInteret>
+                        + getPointInteretById(id: Long): Optionnal<PointInteret>
+                        + getPointInteretByCategorie(categorie: string): List<PointInteret>
+                        + getPointInteretCategoryById(id: long): Set<Categorie>
+                    }
+                }
+                namespace dto{
+                }
+                namespace repository{
+                    interface AdresseeRepository extends JpaRepository{}
+                    interface CategorieRepository extends JpaRepository{}
+                    interface CoordonneesRepository extends JpaRepository{}
+                    interface PointInteretRepository extends JpaRepository{
+                        findByCategories(categorie: Categorie): PointInteret
+                    }
+                }
+                namespace service{
+                    namespace serviceImpl{
+                        interface PointInteretService {
+                            getAll(): List<PointInteret>
+                            getById(id: long): Optional<PointInteret>
+                            getByCategory(categorie: string): List<PointInteret>
+                            save(newPoint: PointInteret)
+                            getCategoryById(id: long): Set<Categorie>
+                        }
+
+                        class PointInteretServiceImpl implements PointInteretService {
+                            - repository: PointInteretRepository
+                            + this()
+                            + getAll(): List<PointInteret>
+                            + getById(id: long): Optional<PointInteret>
+                            + getByCategory(categorie: string): List<PointInteret>
+                            + save(newPoint: PointInteret)
+                            + getCategoryById(id: long): Set<Categorie>
                         }
                     }
-                    class AppMain{}
                 }
             }
         }
-        namespace test{
     }
+    namespace exception{
+    }
+    namespace config{
+    }
+    namespace helper{
+        class Helper {
+            ~ {static} version: string
+            - {static} setNewVersion(): void
+            - {static} getVersion(): string
+        }
+    }
+    class AppMain{}
 }
 
-src.main.java.com.smartmapper.core.domain.model.Route *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
-src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
-src.main.java.com.smartmapper.core.domain.model.PointOfInterest *..>  src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
-src.main.java.com.smartmapper.core.domain.model.Adress *..>  src.main.java.com.smartmapper.core.domain.model.PointOfInterest : "contains"
-src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adress : "contains"
+src.main.java.com.smartmapper.core.domain.model.Itineraire *..> "*" src.main.java.com.smartmapper.core.domain.model.PointInteret : "contains"
+' src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
+src.main.java.com.smartmapper.core.domain.model.PointInteret *..> "1" src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
+src.main.java.com.smartmapper.core.domain.model.PointInteret *..> "1" src.main.java.com.smartmapper.core.domain.model.Categorie : "contains"
+src.main.java.com.smartmapper.core.domain.model.Adresse *..> "1" src.main.java.com.smartmapper.core.domain.model.PointInteret : "contains"
+' src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adresse : "contains"
+src.main.java.com.smartmapper.core.domain.model.PointInteretBuilderImpl ..> src.main.java.com.smartmapper.core.domain.model.PointInteret: "construct"
+src.main.java.com.smartmapper.core.domain.model.AdresseeBuilderImpl ..> src.main.java.com.smartmapper.core.domain.model.Adresse: "construct"
 
 
 "@enduml"
