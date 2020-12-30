@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class PointInteretServiceImpl implements PointInteretService {
 
-    @Autowired
     private PointInteretRepository repository;
 
     public PointInteretServiceImpl(PointInteretRepository repository) {
