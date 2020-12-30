@@ -10,3 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface PointInteretRepository extends JpaRepository<PointInteret, Long> {
     PointInteret findByCategories(Categorie categorie);
 }
+
