@@ -48,10 +48,18 @@ public class PointInteretServiceImpl implements PointInteretService {
                 .collect(Collectors.toList());
     }
 
+    //Ahlem
     @Override
     public List<PointInteret> getByCategoryandByPosition(String categorie, double lat, double lg) {
-        return null;
+        return getByCategory(categorie).stream()
+                .sorted((p1, p2) -> {
+                    double dis1 = distance(p1.getCoordonnes().getLatitude(), p1.getCoordonnes().getLongitude(), lat, lg);
+                    double dis2 = distance(p2.getCoordonnes().getLatitude(), p2.getCoordonnes().getLongitude(), lat, lg);
+                    return Double.compare(dis1, dis2);
+                })
+                .collect(Collectors.toList());
     }
+
     //  d = √((x2 - x1)^2 + (y2 - y1)^2)
     public double distance(double latA, double lgA, double latP, double lgP) {
         double dLat = latA - latP;
@@ -60,3 +68,4 @@ public class PointInteretServiceImpl implements PointInteretService {
     }
 
 }
+
