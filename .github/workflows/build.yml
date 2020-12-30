@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - develop
+      - master
   pull_request:
     branches:
       - develop
+      - master
 
 jobs:
   build:
@@ -43,10 +45,6 @@ jobs:
         run: ./gradlew build
       - name: Generate coverage report
         run: ./gradlew jacocoTestReport 
-      - name: Generate jar 
-        run: ./gradlew bootJar
-      - name: Generate documentation
-        run: ./gradlew asciidoctor
       - name: Code coverage with CodeCov
         uses: codecov/codecov-action@v1
         with:
