@@ -30,4 +30,3 @@ jobs:
           files: |
             build/libs/*.jar
             build/docs/asciidocPdf/*.pdf
-        id: "automatic_releases"
