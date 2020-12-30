@@ -28,7 +28,7 @@ plugins {
 }
 
 group ='com.smartmapper'
-version '1.0-beta.1 '
+version '1.0-beta.1'
 
 // plugin to get the version of the project
 // from https://stackoverflow.com/questions/13198358/how-to-get-project-version-in-custom-gradle-plugin
@@ -117,9 +117,8 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
-        html.enabled = true
-        html.destination = file("${buildDir}/jacocoHtml")
+        xml.enabled = true 
+        html.enabled = false
     }
 }
 
@@ -138,4 +137,12 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "smartmapperproject_SmartMapperBackend"
+    property "sonar.organization", "smartmapperproject"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
