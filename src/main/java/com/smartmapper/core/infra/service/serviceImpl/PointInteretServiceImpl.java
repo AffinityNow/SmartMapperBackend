@@ -52,6 +52,11 @@ public class PointInteretServiceImpl implements PointInteretService {
     public List<PointInteret> getByCategoryandByPosition(String categorie, double lat, double lg) {
         return null;
     }
-
+    //  d = √((x2 - x1)^2 + (y2 - y1)^2)
+    public double distance(double latA, double lgA, double latP, double lgP) {
+        double dLat = latA - latP;
+        double dLg = lgA - lgP;
+        return Math.sqrt(dLat * dLat + dLg * dLg);
+    }
 
 }
