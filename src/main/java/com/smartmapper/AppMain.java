@@ -20,7 +20,7 @@ import com.smartmapper.core.domain.model.PointInteretBuilderImpl;
 import com.smartmapper.core.infra.repository.AdresseRepository;
 import com.smartmapper.core.infra.repository.CategorieRepository;
 import com.smartmapper.core.infra.repository.CoordonneesRepository;
-import com.smartmapper.core.infra.service.serviceImpl.PointInteretService;
+import com.smartmapper.core.infra.service.PointInteretService;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -98,14 +98,14 @@ public class AppMain {
                     description = "";
                 final Coordonnees coordonnees = new Coordonnees(poi.get("fields").get("longitude").doubleValue(),
                 poi.get("fields").get("latitude").doubleValue(), null);
-                
+
                 //Creation de l'objet point d'interet
                 final PointInteret unPoint = new PointInteretBuilderImpl(poi.get("fields").get("titre").asText(),
                     coordonnees, description)
                     .withAdresse(adresse)
                     .withCategorie(lCategories)
                     .build();
-                
+
                 lCategories.forEach(lca -> {
                     if(lca!=null)
                         unPoint.addCategorie(lca);

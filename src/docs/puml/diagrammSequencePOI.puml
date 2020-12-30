@@ -16,10 +16,11 @@ activate User #green
 User -> UI: choose(category)
 
 UI -> POIService: commit choice
+POIService -> POIService: **getPosition**
 deactivate UI
 activate APIRest #green
 
-POIService -> APIRest: "HTTP" GET/POI/category
+POIService -> APIRest: "HTTP" GET<POI>/category/position
 APIRest --> POIService:"HTTP" 200 OK response
 
 POIService -> UI: provide resource

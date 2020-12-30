@@ -8,25 +8,22 @@ import java.util.stream.Collectors;
 import com.smartmapper.core.domain.model.Categorie;
 import com.smartmapper.core.domain.model.PointInteret;
 import com.smartmapper.core.infra.repository.PointInteretRepository;
+import com.smartmapper.core.infra.service.PointInteretService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PointInteretServiceImpl implements PointInteretService {
 
-    @Autowired
     private PointInteretRepository repository;
+
+    public PointInteretServiceImpl(PointInteretRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<PointInteret> getAll() {
         return repository.findAll();
-    }
-
-    @Override
-    public List<PointInteret> getByCategory(String categorie) {
-        return repository.findAll().stream()
-                .filter(p -> p.getCategories().stream().anyMatch(c -> c.getName().equals(categorie)))
-                .collect(Collectors.toList());
     }
 
     @Override
@@ -43,5 +40,14 @@ public class PointInteretServiceImpl implements PointInteretService {
     public Set<Categorie> getCategoryById(Long id) {
         return repository.getOne(id).getCategories();
     }
-    
+
+    @Override
+    public List<PointInteret> getByCategory(String categorie) {
+        return repository.findAll().stream()
+                .filter(p -> p.getCategories().stream().anyMatch(c -> c.getName().equals(categorie)))
+                .collect(Collectors.toList());
+    }
+
+
+
 }

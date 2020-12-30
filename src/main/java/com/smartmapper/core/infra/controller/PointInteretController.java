@@ -6,7 +6,7 @@ import java.util.Set;
 
 import com.smartmapper.core.domain.model.Categorie;
 import com.smartmapper.core.domain.model.PointInteret;
-import com.smartmapper.core.infra.service.serviceImpl.PointInteretService;
+import com.smartmapper.core.infra.service.PointInteretService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,14 +34,16 @@ public class PointInteretController {
         return service.getById(id);
     }
 
+    @GetMapping("/point-interet/{id}/categorie")
+    public Set<Categorie> getPointInteretCategoryById(@PathVariable Long id) {
+        return service.getCategoryById(id);
+    }
+
     @CrossOrigin
     @GetMapping("/point-interet/categorie/{categorie}")
     public List<PointInteret> getPointInteretByCategorie(@PathVariable String categorie) {
         return service.getByCategory(categorie);
     }
 
-    @GetMapping("/point-interet/{id}/categorie")
-    public Set<Categorie> getPointInteretCategoryById(@PathVariable Long id) {
-        return service.getCategoryById(id);
-    }
+
 }
