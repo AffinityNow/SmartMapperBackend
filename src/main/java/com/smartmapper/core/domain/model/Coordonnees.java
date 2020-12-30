@@ -16,7 +16,7 @@ public class Coordonnees {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    private Long id;
     private Double longitude;
     private Double latitude;
     @OneToOne(targetEntity = PointInteret.class)
@@ -93,7 +93,8 @@ public class Coordonnees {
     }
 
     public Coordonnees setLatitude(Double latitude) {
-        this.latitude = latitude; return this;
+        this.latitude = latitude;
+        return this;
     }
 
     public PointInteret getPoint() {
