@@ -13,4 +13,7 @@ public interface PointInteretService {
     void save(PointInteret newUser);
     Set<Categorie> getCategoryById(Long id);
     List<PointInteret> getByCategory(String categorie);
+
+    // Ahlem
+    List<PointInteret> getByCategoryandByPosition(String categorie, double lat, double lg);
 }

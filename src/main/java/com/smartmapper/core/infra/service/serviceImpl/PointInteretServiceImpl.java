@@ -48,6 +48,10 @@ public class PointInteretServiceImpl implements PointInteretService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<PointInteret> getByCategoryandByPosition(String categorie, double lat, double lg) {
+        return null;
+    }
 
 
 }

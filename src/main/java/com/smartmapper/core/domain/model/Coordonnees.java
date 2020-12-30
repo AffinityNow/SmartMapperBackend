@@ -83,25 +83,27 @@ public class Coordonnees {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public Coordonnees setLongitude(Double longitude) {
         this.longitude = longitude;
+        return this;
     }
 
     public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    public Coordonnees setLatitude(Double latitude) {
+        this.latitude = latitude; return this;
     }
 
     public PointInteret getPoint() {
         return point;
     }
 
-    public void setPoint(PointInteret point) {
+    public Coordonnees setPoint(PointInteret point) {
         this.point = point;
         point.setCoordonnes(this);
+        return this;
     }
 
     public Coordonnees(Double longitude, Double latitude, PointInteret point) {
