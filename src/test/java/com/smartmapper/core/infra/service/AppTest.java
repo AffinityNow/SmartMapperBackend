@@ -44,4 +44,41 @@ public class AppTest {
         //then
         assertEquals(expected, actual, 1e-9);
     }
+
+
+    @Test
+    public void should_sort_points() {
+        // Given:
+        PointInteret p1 = Mockito.mock(PointInteret.class);
+        PointInteret p2 = Mockito.mock(PointInteret.class);
+        PointInteret p3 = Mockito.mock(PointInteret.class);
+
+        Mockito.when(p1.getCoordonnes()).thenReturn(new Coordonnees().setLatitude(48.9504898).setLongitude(2.1638332));
+        Mockito.when(p1.getCategories()).thenReturn(Set.of(new Categorie(null, "sport")));
+
+        Mockito.when(p2.getCoordonnes()).thenReturn(new Coordonnees().setLatitude(148.822469).setLongitude(2.245169));
+        Mockito.when(p2.getCategories()).thenReturn(Set.of(new Categorie(null, "sport")));
+
+        Mockito.when(p3.getCoordonnes()).thenReturn(new Coordonnees().setLatitude(49.822469).setLongitude(-2.245169));
+        Mockito.when(p3.getCategories()).thenReturn(Set.of(new Categorie(null, "sport")));
+
+        PointInteretRepository repository = Mockito.mock(PointInteretRepository.class);
+        Mockito.when(repository.findAll()).thenReturn(List.of(p1, p2, p3));
+
+        PointInteretServiceImpl test = new PointInteretServiceImpl(repository);
+
+        // When:
+        List<PointInteret> actual = test.getByCategoryandByPosition("sport", 48.9504898, 2.1638332);
+
+        // Then:
+        List<PointInteret> expected = List.of(p1, p3, p2);
+
+        assertEquals(expected, actual);
+
+    }
+
+
+
+
+
 }
