@@ -39,13 +39,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 @EnableJpaRepositories("com.smartmapper.core.infra.repository")
 @EnableSwagger2
 public class AppMain {
-    public String getGreeting() {
-        return "Hello dolphin.";
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(AppMain.class, args);
-        System.out.println(new AppMain().getGreeting());
     }
 
     @Bean

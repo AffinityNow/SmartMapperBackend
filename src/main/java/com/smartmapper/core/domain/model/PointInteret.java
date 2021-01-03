@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -30,8 +29,6 @@ public class PointInteret {
     private Coordonnees coordonnes;
     @Column(length = 1000)
     private String description;
-    @ManyToOne(targetEntity = Itineraire.class, cascade=CascadeType.ALL)
-    private Itineraire itineraire;
     @OneToOne(targetEntity = Adresse.class, cascade=CascadeType.ALL)
     @JsonManagedReference
     private Adresse adresse;
@@ -130,14 +127,6 @@ public class PointInteret {
         this.id = id;
     }
 
-    public Itineraire getItineraire() {
-        return itineraire;
-    }
-
-    public void setItineraire(Itineraire itineraire) {
-        this.itineraire = itineraire;
-    }
-
     public Adresse getAdresse() {
         return adresse;
     }
@@ -146,12 +135,11 @@ public class PointInteret {
         this.adresse = adresse;
     }
 
-    PointInteret(String name, Coordonnees coordonnes, String description, Itineraire itineraire, Adresse adresse,
+    PointInteret(String name, Coordonnees coordonnes, String description, Adresse adresse,
             Set<Categorie> categories) {
         this.name = name;
         this.coordonnes = coordonnes;
         this.description = description;
-        this.itineraire = itineraire;
         this.adresse = adresse;
         this.categories = categories;
     }
