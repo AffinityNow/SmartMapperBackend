@@ -197,8 +197,8 @@ image::../endpoints.png[Swagger EndPoints]
 image::../Diagramm.svg[Diagramme de classe du projet]
 
 == Diagramme de Séquence
-image::../diagrammSequence.png[Diagramme de séquence]
-image::../diagrammSequence2.png[Diagramme de séquence]
+image::../diagrammSequencePOI.png[Diagramme de séquence]
+image::../diagrammSequenceItineraire.png[Diagramme de séquence]
 
 == Site Web Projet
 

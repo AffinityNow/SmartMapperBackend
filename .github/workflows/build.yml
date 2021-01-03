@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - develop
+      - master
   pull_request:
     branches:
       - develop
+      - master
 
 jobs:
   build:
@@ -40,12 +42,13 @@ jobs:
       - name: Get permission for gradle wrapper
         run: chmod a+x ./gradlew
       - name: Build and Test with Gradle
-        run: ./gradlew build jacocoTestReport
-      - name: Generate jar 
-        run: ./gradlew bootJar
-      - name: Generate documentation
-        run: ./gradlew asciidoctor
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+        run: ./gradlew build
+      - name: Generate coverage report
+        run: ./gradlew jacocoTestReport 
+      - name: Code coverage with CodeCov
+        uses: codecov/codecov-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.CODECOV_TOKEN }}  
+            file: ./build/reports/jacoco/test/jacocoTestReport.xml
+            fail_ci_if_error: true
+            verbose: true 

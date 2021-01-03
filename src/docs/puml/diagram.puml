@@ -1,4 +1,4 @@
-"@startuml diagram"
+@startuml diagram
 !include style/commons.style
 namespace src.main.java.com.smartmapper {
     namespace core{
@@ -228,4 +228,4 @@ src.main.java.com.smartmapper.core.domain.model.PointInteretBuilderImpl ..> src.
 src.main.java.com.smartmapper.core.domain.model.AdresseeBuilderImpl ..> src.main.java.com.smartmapper.core.domain.model.Adresse: "construct"
 
 
-"@enduml"
+@enduml

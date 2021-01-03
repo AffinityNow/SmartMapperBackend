@@ -1,11 +1,10 @@
 # com.smartmapper
-[![Build Status](https://travis-ci.com/smartmapperproject/SmartMapperBackend.svg?branch=master)](https://travis-ci.com/smartmapperproject/SmartMapperBackend)
-[![Coverage Status](https://coveralls.io/repos/github/smartmapperproject/SmartMapperBackend/badge.svg?branch=master)](https://coveralls.io/github/smartmapperproject/SmartMapperBackend?branch=master)
+![build](https://github.com/smartmapperproject/SmartMapperBackend/workflows/build/badge.svg)
+[![codecov](https://codecov.io/gh/smartmapperproject/SmartMapperBackend/branch/master/graph/badge.svg?token=QL5ODUUBAB)](https://codecov.io/gh/smartmapperproject/SmartMapperBackend)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/smartmapperproject/SmartMapperBackend)
 [![License](https://img.shields.io/github/license/smartmapperproject/SmartMapperBackend.svg?style=flat-square)](LICENSE)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smartmapperproject_SmartMapperBackend&metric=alert_status)](https://sonarcloud.io/dashboard?id=smartmapperproject_SmartMapperBackend)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=smartmapperproject_SmartMapperBackend&metric=coverage)](https://sonarcloud.io/dashboard?id=smartmapperproject_SmartMapperBackend)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=smartmapperproject_SmartMapperBackend&metric=sqale_index)](https://sonarcloud.io/dashboard?id=smartmapperproject_SmartMapperBackend)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=smartmapperproject_SmartMapperBackend&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=smartmapperproject_SmartMapperBackend)
 # Context
