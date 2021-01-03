@@ -4,27 +4,6 @@ namespace src.main.java.com.smartmapper {
     namespace core{
         namespace domain{
             namespace model{
-                ' class User{
-                '     + id: long
-                '     + name :string
-                '     + login : string
-                '     + password : string
-                '     + favori : Map<string, Favori>
-                '     + Adressees : Map<string, Adressee>
-                '     + itineraires : Map<string, Adressee>
-                '     + this(name, login, password)
-                '     + getName() : string
-                '     + setName(string name) : void
-                '     + getLogin() : string
-                '     + setLogin(string login) : void
-                '     + getPassword : string
-                '     + setPassword(string password) : string
-                '     + getFavoris() : Map<string, Favori>
-                '     + setFavoris(Map<string, Favori> favori) : void
-                '     + getAdressees() : Map<string, Favori>
-                '     + setAdressees(Map<string, Favori> favori) : void  
-                ' }
-                
                 class Coordinates   {
                     + X : double
                     + Y : double
@@ -48,37 +27,17 @@ namespace src.main.java.com.smartmapper {
                     + setDescription(string description) : void
                 }
 
-                class Itineraire {
-                    + name : string
-                    + PointInteret : Map<string, PointInteret>
-                    + this(name, PointInteret)
-                    + getName() : string
-                    + setName(string name) : void
-                    + getPointInterets() : Map<string, PointInteret>
-                    + setPointInteret(PointInteret p) : void
-                }
-
-                ' class Favori extends src.main.java.com.smartmapper.core.domain.model.PointInteret{
-                '     + note : Note
-                '     + this(name, Coordinates, description, Note)
-                '     + getNote() : Note
-                '     + setNote(Note note) : void
-                ' }
-
                 class Adresse {
                     + name : string
-                    + user : User
                     + lines : string
                     + cedex : string
                     + postalCode : string
                     + city : string
                     + country : string
                     + point : PointInteret
-                    + this(name, user, lines)
+                    + this(name, lines)
                     + getName() : string
                     + setName(string name) : void
-                    + getUser() : User
-                    + setUser(User user) : void
                     + getLines() : string
                     + setLines(string line1) : void
                     + getPostalCode() : postalCode
@@ -111,12 +70,10 @@ namespace src.main.java.com.smartmapper {
                     + ville : String
                     + pays : String
                     + telephone : String
-                    + user : User
                     + this(name: string, lines: string)
                     + withCedex(cedex: string): AdresseeBuilder
                     + withVille(ville: string): AdresseeBuilder
                     + withPays(pays: string): AdresseeBuilder
-                    + withUser(user: User): AdresseeBuilder
                     + withPoint(pInteret: PointInteret): AdresseeBuilder
                     + withCodePostal(cPostal: string): AdresseeBuilder
                     + withTelephone(telephone: string): AdresseeBuilder
@@ -144,7 +101,6 @@ namespace src.main.java.com.smartmapper {
                     withCedex(cedex: string): AdresseeBuilder
                     withVille(ville: string): AdresseeBuilder
                     withPays(pays: string): AdresseeBuilder
-                    withUser(user: User): AdresseeBuilder
                     withPoint(pInteret: PointInteret): AdresseeBuilder
                     withCodePostal(cPostal: string): AdresseeBuilder
                     withTelephone(telephone: string): AdresseeBuilder
@@ -218,14 +174,10 @@ namespace src.main.java.com.smartmapper {
     class AppMain{}
 }
 
-src.main.java.com.smartmapper.core.domain.model.Itineraire *..> "*" src.main.java.com.smartmapper.core.domain.model.PointInteret : "contains"
-' src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Favori : "contains"
 src.main.java.com.smartmapper.core.domain.model.PointInteret *..> "1" src.main.java.com.smartmapper.core.domain.model.Coordinates : "contains"
 src.main.java.com.smartmapper.core.domain.model.PointInteret *..> "1" src.main.java.com.smartmapper.core.domain.model.Categorie : "contains"
 src.main.java.com.smartmapper.core.domain.model.Adresse *..> "1" src.main.java.com.smartmapper.core.domain.model.PointInteret : "contains"
-' src.main.java.com.smartmapper.core.domain.model.User *..>  src.main.java.com.smartmapper.core.domain.model.Adresse : "contains"
 src.main.java.com.smartmapper.core.domain.model.PointInteretBuilderImpl ..> src.main.java.com.smartmapper.core.domain.model.PointInteret: "construct"
 src.main.java.com.smartmapper.core.domain.model.AdresseeBuilderImpl ..> src.main.java.com.smartmapper.core.domain.model.Adresse: "construct"
-
 
 @enduml

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,19 +19,16 @@ public class Adresse {
 
     private String name;
     
-    @ManyToOne(targetEntity=User.class)
-    private User user;
-
     private String lines;
     private String cedex;
     private String codePostal;
     private String ville;
     private String pays;
-    private String telephone;
     @OneToOne(targetEntity = PointInteret.class)
     @JsonBackReference
     @Nullable
     private PointInteret point;
+    private String telephone;
 
     public String getName() {
         return name;
@@ -40,14 +36,6 @@ public class Adresse {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getLines() {
@@ -158,7 +146,6 @@ public class Adresse {
         builder.append(", point=");
         builder.append(point);
         builder.append(", user=");
-        builder.append(user);
         builder.append(", ville=");
         builder.append(ville);
         builder.append("]");
@@ -168,15 +155,31 @@ public class Adresse {
     public Adresse() {
     }
 
-    Adresse(String name, User user, String lines, String cedex, String codePostal, String ville, String pays, PointInteret point, String telephone) {
+    public Adresse(String name, String lines, String cedex, String codePostal, String ville, String pays,
+            PointInteret point, String telephone) {
         this.name = name;
-        this.user = user;
         this.lines = lines;
         this.cedex = cedex;
         this.codePostal = codePostal;
         this.ville = ville;
         this.pays = pays;
         this.point = point;
+        this.telephone = telephone;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 }

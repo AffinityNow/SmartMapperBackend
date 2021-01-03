@@ -39,13 +39,6 @@ public class PointInteretController {
         return service.getCategoryById(id);
     }
 
-//    @CrossOrigin
-//    @GetMapping("/point-interet/categorie/{categorie}")
-//    public List<PointInteret> getPointInteretByCategorie(@PathVariable String categorie) {
-//        return service.getByCategory(categorie);
-//    }
-
-    //Ahlem
     @CrossOrigin
     @GetMapping("/point-interet/categorie/{categorie}/{lat}/{lg}")
     public List<PointInteret> getPointInteretByCategoriePosition(@PathVariable String categorie,
@@ -54,6 +47,4 @@ public class PointInteretController {
     ) {
         return service.getByCategoryandByPosition(categorie, lat, lg);
     }
-
-
 }

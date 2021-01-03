@@ -206,3 +206,5 @@ _https://smartmapperproject.github.io/SmartMapperFrontend/_
 
 == Retours & Feedback
 image::../retours.png[Diagramme de séquence]
+== Burndown Chart 
+image::../bdc.png[Diagramme de séquence]
