@@ -194,11 +194,11 @@ Ci-dessous une liste des "endpoints" provenant de l'API Swagger
 
 image::../endpoints.png[Swagger EndPoints]
 == Diagramme de classes
-image::../Diagramm.svg[Diagramme de classe du projet]
+image::../diagram.svg[Diagramme de classe du projet]
 
 == Diagramme de Séquence
-image::../diagrammSequence.png[Diagramme de séquence]
-image::../diagrammSequence2.png[Diagramme de séquence]
+image::../diagrammSequencePOI.png[Diagramme de séquence]
+image::../diagrammSequenceItineraire.png[Diagramme de séquence]
 
 == Site Web Projet
 
