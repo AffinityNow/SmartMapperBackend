@@ -3,28 +3,28 @@
 
 mainframe POI Diagram
 
-actor User #blue
-participant UI #pink
-participant POIService #orange
-participant APIRest #tan
+actor User 
+participant UI 
+participant POIService 
+participant APIRest 
 
-activate POIService #green
+activate POIService 
 POIService -> UI: displayListOfCategories
-activate UI #green
+activate UI 
 
-activate User #green
+activate User 
 User -> UI: choose(category)
 
 UI -> POIService: commit choice
 POIService -> POIService: **getPosition**
 deactivate UI
-activate APIRest #green
+activate APIRest 
 
 POIService -> APIRest: "HTTP" GET<POI>/category/position
 APIRest --> POIService:"HTTP" 200 OK response
 
 POIService -> UI: provide resource
-activate UI #green
+activate UI 
 deactivate APIRest
 deactivate POIService
 
