@@ -9,7 +9,6 @@ import com.smartmapper.core.domain.model.Categorie;
 import com.smartmapper.core.domain.model.PointInteret;
 import com.smartmapper.core.infra.repository.PointInteretRepository;
 import com.smartmapper.core.infra.service.PointInteretService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

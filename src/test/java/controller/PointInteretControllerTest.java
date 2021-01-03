@@ -1,4 +1,4 @@
-package com.smartmapper.core.infra.service;
+package controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -12,6 +12,7 @@ import java.util.Set;
 import com.smartmapper.core.domain.model.Categorie;
 import com.smartmapper.core.domain.model.PointInteret;
 import com.smartmapper.core.infra.controller.PointInteretController;
+import com.smartmapper.core.infra.service.PointInteretService;
 
 import org.junit.Before;
 import org.junit.Test;
